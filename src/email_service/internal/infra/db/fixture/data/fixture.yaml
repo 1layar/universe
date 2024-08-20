@@ -1,0 +1,30 @@
+- model: EmailTemplate
+  rows:
+    - name: "Welcome"
+      subject: "Welcome to {{.appName}}"
+      text_content: '{{ loadFile "data/welcome.txt" }}'
+      html_content: '{{ loadFile "data/welcome.html" }}'
+      placeholders: 
+        name: "guest"
+        appName: "email"
+    - name: "Password Reset"
+      subject: "Reset your {{.appName}} password"
+      text_content: '{{ loadFile "data/password_reset.txt" }}'
+      html_content: '{{ loadFile "data/password_reset.html" }}'
+      placeholders:
+        name: "guest"
+        appName: "email"
+    - name: "Account Verification"
+      subject: "Verify your {{.appName}} account"
+      text_content: '{{ loadFile "data/confirm.txt" }}'
+      html_content: '{{ loadFile "data/confirm.html" }}'
+      placeholders:
+        name: "guest"
+        appName: "email"
+- model: Account
+  rows:
+    - code: "mailtrap_sandbox"
+      smtp_host: "sandbox.smtp.mailtrap.io"
+      smtp_port: 2525
+      smtp_username: "349315fd485bce"
+      smtp_password: "8ee4bdcd63c4bd"

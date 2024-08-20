@@ -1,0 +1,89 @@
+- model: Category
+  rows:
+    - _id: food
+      name: Food
+      description: Food is any substance consumed to provide nutritional support for an organism.
+    - _id: electronic
+      name: Electronic
+      description: Electronic devices, such as computers, home appliances, and televisions.
+    - _id: book
+      name: Book
+      description: A book is a set of written, printed or electronic material, usually consisting of text, images, or both.
+    - _id: smartphone
+      name: Smartphone
+      description: Smartphone is a mobile phone with a touchscreen display.
+      parent_id: '{{ $.Category.electronic.ID }}'
+    - _id: toy
+      name: Toy
+      description: A toy is an object or an article of toy.
+    - _id: clothes
+      name: Clothes
+      description: Clothes are articles of clothing.
+
+- model: Product
+  rows:
+    - _id: one
+      name: Apple
+      sku: APL
+      description: Apple is a round fruit with an edible stem. Apple is the pomaceous fruit of the tree Malus domestica. It is eaten fresh as an apple pie or apple turnover.
+      picture_url: https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg
+      quantity: 100
+      price: 100
+    - _id: two
+      name: Banana
+      sku: BANANA
+      description: Banana is an elongated, edible fruit with botrytus in the genus Musa. It is produced by several kinds of large herbaceous flowering plants in the genus Musa.
+      picture_url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Banana-Single.jpg/320px-Banana-Single.jpg
+      quantity: 100
+      price: 100
+    - _id: three
+      name: Orange
+      sku: ORANGE
+      description: Orange is the fruit of various citrus species in the family Rutaceae. The species are propagated by sexual reproduction of the fruit.
+      picture_url: https://upload.wikimedia.org/wikipedia/commons/7/78/Orange-Whole.jpg
+      quantity: 100
+      price: 100
+    - _id: four
+      name: IPhone 11
+      sku: I123
+      description: The iPhone 11 is a line of smartphones designed and marketed by Apple Inc. It is the 11th generation of the iPhone.
+      picture_url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/IPhone11.jpg/320px-IPhone11.jpg
+      quantity: 100
+      price: 2000
+    - _id: five
+      name: "Harry Potter: The Philosopher's Stone"
+      sku: H123
+      description: "Harry Potter and the Philosopher's Stone is a fantasy novel written by British author J. K. Rowling and released in 1997."
+      picture_url: https://upload.wikimedia.org/wikipedia/en/thumb/1/1b/Harry_Potter_and_the_Philosopher%27s_Stone.jpg/220px-Harry_Potter_and_the_Philosopher%27s_Stone.jpg
+      quantity: 100
+      price: 100
+    - _id: six
+      name: Uno Card
+      sku: U123
+      description: Uno is a card game in which players take turns to play a card that matches the card on the top of the discard pile.
+      picture_url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/IPhone11.jpg/320px-IPhone11.jpg
+      quantity: 100
+      price: 100
+    - _id: seven
+      name: Baggy Jeans
+      sku: B123
+      description: Baggy Jeans is a pair of jeans with a high waist and a high waistband. It is a popular pair of jeans for women.
+      picture_url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/IPhone11.jpg/320px-IPhone11.jpg
+      quantity: 100
+      price: 100
+- model: ProductCategoryRelation
+  rows:
+    - product_id: '{{ $.Product.one.ID }}'
+      category_id: '{{ $.Category.food.ID }}'
+    - product_id: "{{ $.Product.two.ID }}"
+      category_id: "{{ $.Category.food.ID }}"
+    - product_id: "{{ $.Product.three.ID }}"
+      category_id: "{{ $.Category.food.ID }}"
+    - product_id: "{{ $.Product.four.ID }}"
+      category_id: "{{ $.Category.smartphone.ID }}"
+    - product_id: "{{ $.Product.five.ID }}"
+      category_id: "{{ $.Category.book.ID }}"
+    - product_id: "{{ $.Product.six.ID }}"
+      category_id: "{{ $.Category.toy.ID }}"
+    - product_id: "{{ $.Product.seven.ID }}"
+      category_id: "{{ $.Category.clothes.ID }}"

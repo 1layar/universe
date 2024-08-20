@@ -1,0 +1,627 @@
+basePath: /
+definitions:
+  command.AddProductResult:
+    properties:
+      id:
+        type: integer
+    type: object
+  command.AddUserResult:
+    properties:
+      email:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      password:
+        type: string
+      role:
+        type: integer
+    type: object
+  command.DeleteUserResult:
+    properties:
+      has_delete:
+        type: boolean
+      id:
+        type: integer
+    type: object
+  command.GetUserResult:
+    properties:
+      email:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      password:
+        type: string
+    type: object
+  command.LoginResult:
+    properties:
+      access_token:
+        type: string
+      expired_at:
+        type: string
+      permission:
+        items:
+          type: string
+        type: array
+      refresh_token:
+        type: string
+    type: object
+  command.RegisterResult:
+    properties:
+      access_token:
+        type: string
+      expired_at:
+        type: string
+      permission:
+        items:
+          type: string
+        type: array
+      refresh_token:
+        type: string
+    type: object
+  command.SearchUserResult:
+    properties:
+      users:
+        items:
+          $ref: '#/definitions/command.AddUserResult'
+        type: array
+    type: object
+  command.UpdateProductResult:
+    properties:
+      id:
+        type: integer
+    type: object
+  command.UpdateUserResult:
+    properties:
+      email:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  dto.AddProductDTO:
+    properties:
+      category_ids:
+        description: many-to-many relationship with category_id
+        items:
+          type: integer
+        type: array
+      description:
+        type: string
+      name:
+        type: string
+      picture_url:
+        type: string
+      price:
+        type: string
+      quantity:
+        minimum: 1
+        type: integer
+      sku:
+        type: string
+    required:
+    - category_ids
+    - description
+    - name
+    - picture_url
+    - price
+    - quantity
+    - sku
+    type: object
+  dto.AddUser:
+    properties:
+      email:
+        type: string
+      password:
+        minLength: 6
+        type: string
+      role:
+        enum:
+        - 0
+        - 1
+        type: integer
+      username:
+        maxLength: 20
+        minLength: 5
+        type: string
+    required:
+    - email
+    - password
+    - role
+    - username
+    type: object
+  dto.CategoryDTO:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  dto.GetAllProductPaginateResDTO:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/dto.ProductDTO'
+        type: array
+      limit:
+        type: integer
+      page:
+        type: integer
+      total:
+        type: integer
+    type: object
+  dto.GlobalHandlerResp-command_AddProductResult:
+    properties:
+      data:
+        $ref: '#/definitions/command.AddProductResult'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  dto.GlobalHandlerResp-command_AddUserResult:
+    properties:
+      data:
+        $ref: '#/definitions/command.AddUserResult'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  dto.GlobalHandlerResp-command_DeleteUserResult:
+    properties:
+      data:
+        $ref: '#/definitions/command.DeleteUserResult'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  dto.GlobalHandlerResp-command_GetUserResult:
+    properties:
+      data:
+        $ref: '#/definitions/command.GetUserResult'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  dto.GlobalHandlerResp-command_LoginResult:
+    properties:
+      data:
+        $ref: '#/definitions/command.LoginResult'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  dto.GlobalHandlerResp-command_RegisterResult:
+    properties:
+      data:
+        $ref: '#/definitions/command.RegisterResult'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  dto.GlobalHandlerResp-command_SearchUserResult:
+    properties:
+      data:
+        $ref: '#/definitions/command.SearchUserResult'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  dto.GlobalHandlerResp-command_UpdateProductResult:
+    properties:
+      data:
+        $ref: '#/definitions/command.UpdateProductResult'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  dto.GlobalHandlerResp-command_UpdateUserResult:
+    properties:
+      data:
+        $ref: '#/definitions/command.UpdateUserResult'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  dto.GlobalHandlerResp-dto_GetAllProductPaginateResDTO:
+    properties:
+      data:
+        $ref: '#/definitions/dto.GetAllProductPaginateResDTO'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  dto.LoginDTO:
+    properties:
+      email:
+        type: string
+      password:
+        minLength: 6
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  dto.ProductDTO:
+    properties:
+      categories:
+        items:
+          $ref: '#/definitions/dto.CategoryDTO'
+        type: array
+      description:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      picture_url:
+        type: string
+      price:
+        type: string
+      quantity:
+        type: integer
+      sku:
+        type: string
+    type: object
+  dto.RegisterDTO:
+    properties:
+      email:
+        type: string
+      password:
+        minLength: 6
+        type: string
+      username:
+        maxLength: 20
+        minLength: 5
+        type: string
+    required:
+    - email
+    - password
+    - username
+    type: object
+  dto.UpdateProductDTO:
+    properties:
+      category_ids:
+        description: many-to-many relationship with category_id
+        items:
+          type: integer
+        type: array
+      description:
+        type: string
+      name:
+        type: string
+      picture_url:
+        type: string
+      price:
+        type: string
+      quantity:
+        minimum: 1
+        type: integer
+      sku:
+        type: string
+    required:
+    - category_ids
+    - description
+    - name
+    - picture_url
+    - price
+    - quantity
+    - sku
+    type: object
+  dto.UpdateUser:
+    properties:
+      email:
+        type: string
+      id:
+        type: integer
+      password:
+        minLength: 6
+        type: string
+      role:
+        enum:
+        - 0
+        - 1
+        type: integer
+      username:
+        maxLength: 20
+        minLength: 5
+        type: string
+    required:
+    - email
+    - id
+    - password
+    - role
+    - username
+    type: object
+host: localhost:3000
+info:
+  contact:
+    email: fiber@swagger.io
+    name: API Support
+  description: This is a sample swagger for Fiber
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Merasa API
+  version: "1.0"
+paths:
+  /api/v1/auth/login:
+    post:
+      consumes:
+      - application/json
+      description: get accounts
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.LoginDTO'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.GlobalHandlerResp-command_LoginResult'
+      summary: Login accounts
+      tags:
+      - auth
+  /api/v1/auth/register:
+    post:
+      consumes:
+      - application/json
+      description: get accounts
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.RegisterDTO'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.GlobalHandlerResp-command_RegisterResult'
+      summary: Register accounts
+      tags:
+      - auth
+  /api/v1/products:
+    get:
+      consumes:
+      - application/json
+      description: get all product with pagination
+      parameters:
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: categories
+        type: array
+      - in: query
+        name: description
+        type: string
+      - in: query
+        name: limit
+        type: integer
+      - in: query
+        name: name
+        type: string
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: price
+        type: string
+      - in: query
+        name: quantity
+        type: integer
+      - in: query
+        name: sku
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.GlobalHandlerResp-dto_GetAllProductPaginateResDTO'
+      security:
+      - JWT: []
+      summary: Get All Product
+      tags:
+      - products
+    post:
+      consumes:
+      - application/json
+      description: add new product
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.AddProductDTO'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.GlobalHandlerResp-command_AddProductResult'
+      security:
+      - JWT: []
+      summary: Create Product
+      tags:
+      - products
+  /api/v1/products/{id}:
+    put:
+      consumes:
+      - application/json
+      description: update product
+      parameters:
+      - description: product id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateProductDTO'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.GlobalHandlerResp-command_UpdateProductResult'
+      security:
+      - JWT: []
+      summary: Update Product
+      tags:
+      - products
+  /api/v1/users:
+    get:
+      consumes:
+      - application/json
+      description: get accounts
+      parameters:
+      - description: user search by username
+        in: query
+        name: username
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.GlobalHandlerResp-command_SearchUserResult'
+      security:
+      - JWT: []
+      summary: List accounts
+      tags:
+      - accounts
+    post:
+      consumes:
+      - application/json
+      description: add new accounts
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.AddUser'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.GlobalHandlerResp-command_AddUserResult'
+      security:
+      - JWT: []
+      summary: Add accounts
+      tags:
+      - accounts
+  /api/v1/users/:id:
+    delete:
+      consumes:
+      - application/json
+      description: delete accounts by id
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.GlobalHandlerResp-command_DeleteUserResult'
+      security:
+      - JWT: []
+      summary: Delete accounts
+      tags:
+      - accounts
+    get:
+      consumes:
+      - application/json
+      description: get accounts
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.GlobalHandlerResp-command_GetUserResult'
+      security:
+      - JWT: []
+      summary: Get accounts
+      tags:
+      - accounts
+    put:
+      consumes:
+      - application/json
+      description: get accounts
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateUser'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.GlobalHandlerResp-command_UpdateUserResult'
+      security:
+      - JWT: []
+      summary: Get accounts
+      tags:
+      - accounts
+securityDefinitions:
+  JWT:
+    description: '"Type ''Bearer TOKEN'' to correctly set the API Key"'
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

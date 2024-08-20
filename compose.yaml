@@ -1,0 +1,81 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_DB: ${POSTGRES_DB:-postgres}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  openfga_migrate:
+    depends_on:
+      - postgres
+    image: openfga/openfga:latest
+    container_name: migrate
+    command: migrate
+    environment:
+      - OPENFGA_DATASTORE_ENGINE=postgres
+      - OPENFGA_DATASTORE_PASSWORD=${POSTGRES_PASSWORD:-password}
+      - OPENFGA_DATASTORE_USERNAME=${POSTGRES_USER:-user}
+      - OPENFGA_DATASTORE_URI=${DATABASE_URL}
+  openfga:
+    image: openfga/openfga:latest
+    container_name: openfga
+    depends_on:
+      - postgres
+    environment:
+      - OPENFGA_DATASTORE_ENGINE=postgres
+      - OPENFGA_DATASTORE_PASSWORD=${POSTGRES_PASSWORD:-password}
+      - OPENFGA_DATASTORE_USERNAME=${POSTGRES_USER:-user}
+      - OPENFGA_DATASTORE_URI=${DATABASE_URL}
+      - OPENFGA_LOG_FORMAT=json
+    ports:
+      - "18080:8080"
+      - "18081:8081"
+      - "13000:3000"
+    command: ["run"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  redis:
+    image: redis:latest
+    restart: always
+    ports:
+      - "6378:6379"
+    volumes:
+      - redis_data:/data
+  asynqmon:
+    image: hibiken/asynqmon
+    depends_on:
+      - redis
+    container_name: asynqmon
+    ports:
+      - "3700:3000"
+    environment:
+      - PORT=3000
+      - REDIS_ADDR=${REDIS_ADDR:-redis:6379}
+    restart: unless-stopped
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-rabbitmq}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-rabbitmq}
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+volumes:
+  postgres_data:
+  rabbitmq_data:
+  redis_data:

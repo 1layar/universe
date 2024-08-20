@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "https://gist.githubusercontent.com/zgunz42/8ece4d1f7a36ed782010898c9a0c1229/raw/912d801f5e15415d21d146a9b69fae9aa41fe326/bun_schema.json": "fixture/data/template.yaml",
+    },
+}

@@ -1,0 +1,5 @@
+.env
+/vendor
+/postgres_data
+/rabbitmq_data
+__debug*

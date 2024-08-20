@@ -1,0 +1,22 @@
+Dear [User's Name],
+
+Thank you for signing up with [Your Company/Service Name]!
+
+To complete your registration and activate your account, please confirm your email address by clicking the link below:
+
+[Confirm Email Address]
+
+If the button above does not work, please copy and paste the following link into your web browser:
+[URL]
+
+This step helps us ensure that we have the correct email address for you and allows you to fully access all the features of our service.
+
+If you did not create an account with us, please ignore this email.
+
+Thank you for your prompt attention.
+
+Best regards,
+[Your Name]
+[Your Position]
+[Your Company/Service Name]
+[Contact Information]

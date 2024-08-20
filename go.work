@@ -1,0 +1,15 @@
+go 1.22.2
+
+use (
+	./package/logger
+	./package/micromill/broker
+	./package/micromill/client
+	./package/micromill/server
+	./src/account_service
+	./src/api_gateway
+	./src/auth_service
+	./src/cms_service
+	./src/email_service
+	./src/product_catalog_service
+	./src/shared
+)
