@@ -12,7 +12,6 @@ services:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-
   openfga_migrate:
     depends_on:
       - postgres
@@ -63,7 +62,6 @@ services:
       - PORT=3000
       - REDIS_ADDR=${REDIS_ADDR:-redis:6379}
     restart: unless-stopped
-
   rabbitmq:
     image: rabbitmq:3-management
     restart: always

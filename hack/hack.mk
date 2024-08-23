@@ -3,7 +3,7 @@ include ./hack/hack-cli.mk
 # Update GoFrame and its CLI to latest stable version.
 .PHONY: up
 up: cli.install
-	@gf up -a
+	go work sync
 
 # Build binary using configuration from hack/config.yaml.
 .PHONY: build
