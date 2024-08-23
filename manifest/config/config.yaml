@@ -1,0 +1,14 @@
+server:
+  address:     ":8000"
+  openapiPath: "/api.json"
+  swaggerPath: "/swagger"
+
+logger:
+  level : "all"
+  stdout: true
+
+database:
+  default:
+    link:  "mysql:root:root@tcp(127.0.0.1:3306)/ppob?charset=utf8mb4&parseTime=True&loc=Local"
+  user:
+    link:  "sqlite::@file(/var/data/ppob.sqlite3)"

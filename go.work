@@ -1,15 +1,15 @@
 go 1.22.2
 
 use (
-	./pkg/account_service
-	./pkg/api_gateway
-	./pkg/auth_service
-	./pkg/cms_service
-	./pkg/email_service
+	./internal/account_service
+	./internal/api_gateway
+	./internal/auth_service
+	./internal/cms_service
+	./internal/email_service
+	./internal/product_catalog_service
 	./pkg/logger
 	./pkg/micromill/broker
 	./pkg/micromill/client
 	./pkg/micromill/server
-	./pkg/product_catalog_service
 	./pkg/shared
 )
