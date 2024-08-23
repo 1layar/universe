@@ -1,4 +1,4 @@
-module github.com/1layar/merasa/backend/package/logger
+module github.com/1layar/universe/package/logger
 
 go 1.22.0
 

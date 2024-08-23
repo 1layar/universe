@@ -1,4 +1,4 @@
-module github.com/1layar/merasa/backend/src/auth_service
+module github.com/1layar/universe/src/auth_service
 
 go 1.22.0
 

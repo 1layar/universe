@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/1layar/merasa/backend/src/email_service/model"
+	"github.com/1layar/universe/src/email_service/model"
 
 	"github.com/uptrace/bun"
 )

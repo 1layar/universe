@@ -3,7 +3,7 @@ package handler
 import (
 	"context"
 
-	"github.com/1layar/merasa/backend/src/shared/constant"
+	"github.com/1layar/universe/src/shared/constant"
 )
 
 func RegAuthRegisterEvent(c EmailHandler) {

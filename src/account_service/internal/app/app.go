@@ -3,15 +3,15 @@ package app
 import (
 	"fmt"
 
-	"github.com/1layar/merasa/backend/src/account_service/internal/app/appconfig"
-	"github.com/1layar/merasa/backend/src/account_service/internal/app/appcontext"
-	"github.com/1layar/merasa/backend/src/account_service/internal/controller"
-	"github.com/1layar/merasa/backend/src/account_service/internal/infra"
-	"github.com/1layar/merasa/backend/src/account_service/internal/repo"
-	"github.com/1layar/merasa/backend/src/account_service/internal/server"
-	"github.com/1layar/merasa/backend/src/account_service/internal/service"
-	"github.com/1layar/merasa/backend/src/account_service/internal/x/logger"
-	"github.com/1layar/merasa/backend/src/account_service/internal/x/logger/fxlogger"
+	"github.com/1layar/universe/src/account_service/internal/app/appconfig"
+	"github.com/1layar/universe/src/account_service/internal/app/appcontext"
+	"github.com/1layar/universe/src/account_service/internal/controller"
+	"github.com/1layar/universe/src/account_service/internal/infra"
+	"github.com/1layar/universe/src/account_service/internal/repo"
+	"github.com/1layar/universe/src/account_service/internal/server"
+	"github.com/1layar/universe/src/account_service/internal/service"
+	"github.com/1layar/universe/src/account_service/internal/x/logger"
+	"github.com/1layar/universe/src/account_service/internal/x/logger/fxlogger"
 	"go.uber.org/fx"
 )
 

@@ -9,7 +9,7 @@ import (
 	"github.com/rs/zerolog/log"
 	"github.com/rs/zerolog/pkgerrors"
 
-	"github.com/1layar/merasa/backend/src/account_service/internal/app/appconfig"
+	"github.com/1layar/universe/src/account_service/internal/app/appconfig"
 )
 
 func Configure(conf *appconfig.Config) {

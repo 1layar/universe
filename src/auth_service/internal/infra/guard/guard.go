@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/1layar/merasa/backend/src/auth_service/internal/app/appconfig"
+	"github.com/1layar/universe/src/auth_service/internal/app/appconfig"
 	openfga "github.com/openfga/go-sdk"
 	"github.com/openfga/go-sdk/client"
 )

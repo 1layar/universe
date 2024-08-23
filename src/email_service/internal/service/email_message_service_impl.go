@@ -3,8 +3,8 @@ package service
 import (
 	"context"
 
-	"github.com/1layar/merasa/backend/src/email_service/internal/repo"
-	"github.com/1layar/merasa/backend/src/email_service/model"
+	"github.com/1layar/universe/src/email_service/internal/repo"
+	"github.com/1layar/universe/src/email_service/model"
 )
 
 type emailMessageService struct {

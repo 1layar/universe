@@ -1,4 +1,4 @@
-module github.com/1layar/merasa/backend/src/cms_service
+module github.com/1layar/universe/src/cms_service
 
 go 1.22.0
 

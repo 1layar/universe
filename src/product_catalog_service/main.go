@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/1layar/merasa/backend/src/product_catalog_service/cmd/app"
+	"github.com/1layar/universe/src/product_catalog_service/cmd/app"
 	"github.com/rs/zerolog/log"
 )
 

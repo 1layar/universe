@@ -3,8 +3,8 @@ package app
 import (
 	"os"
 
-	"github.com/1layar/merasa/backend/src/product_catalog_service/cmd/app/cli/db"
-	"github.com/1layar/merasa/backend/src/product_catalog_service/cmd/app/server"
+	"github.com/1layar/universe/src/product_catalog_service/cmd/app/cli/db"
+	"github.com/1layar/universe/src/product_catalog_service/cmd/app/server"
 
 	"github.com/rs/zerolog/log"
 	"github.com/urfave/cli/v2"

@@ -3,9 +3,9 @@ package handler
 import (
 	"context"
 
-	"github.com/1layar/merasa/backend/src/auth_service/internal/service"
-	"github.com/1layar/merasa/backend/src/shared/command"
-	"github.com/1layar/merasa/backend/src/shared/dto"
+	"github.com/1layar/universe/src/auth_service/internal/service"
+	"github.com/1layar/universe/src/shared/command"
+	"github.com/1layar/universe/src/shared/dto"
 	"github.com/ThreeDotsLabs/watermill-amqp/v2/pkg/amqp"
 	"github.com/ThreeDotsLabs/watermill/components/cqrs"
 	"go.uber.org/fx"

@@ -1,4 +1,4 @@
-module github.com/1layar/merasa/backend/package/micromill/broker
+module github.com/1layar/universe/package/micromill/broker
 
 go 1.22.0
 

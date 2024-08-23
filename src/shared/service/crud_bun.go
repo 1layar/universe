@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/1layar/merasa/backend/src/shared/repository"
+	"github.com/1layar/universe/src/shared/repository"
 )
 
 type CrudBunService[T any] struct {

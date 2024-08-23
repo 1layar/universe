@@ -18,8 +18,8 @@ This is an opinionated template for building a RESTful API via HTTP transport pr
   - `.github/workflows/build-check.yml` for continuously checking the build status of the project by building the docker image of the project but not pushing it to the registry
   - `.github/workflows/build-release.yml` for releasing a version, in which GitHub Actions:
     1. Builds container image with automatically generated [OCI Image Format Specification labels](https://github.com/opencontainers/image-spec/blob/main/annotations.md) via [docker/metadata-action](https://github.com/docker/metadata-action)
-    2. Pushes the image to [GitHub Container Registry](https://github.com/1layar/merasa/backend/src/api_gateway/pkgs/container/gofiber-template)
-    3. Creates a [GitHub Release](https://github.com/1layar/merasa/backend/src/api_gateway/releases) with automatically generated [GitHub Release Notes](https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes) via [marvinpinto/action-automatic-releases](https://github.com/marvinpinto/action-automatic-releases)
+    2. Pushes the image to [GitHub Container Registry](https://github.com/1layar/universe/src/api_gateway/pkgs/container/gofiber-template)
+    3. Creates a [GitHub Release](https://github.com/1layar/universe/src/api_gateway/releases) with automatically generated [GitHub Release Notes](https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes) via [marvinpinto/action-automatic-releases](https://github.com/marvinpinto/action-automatic-releases)
 
 ## Getting Started
 
@@ -34,7 +34,7 @@ This repository is meant to be used as a template for your own project. You can 
 If you want to clone this repository, you can do so by running the following command:
 
 ```bash
-git clone git@github.com:1layar/merasa/backend/src/api_gateway.git
+git clone git@github.com:1layar/universe/src/api_gateway.git
 ```
 
 ### 2. Configure database URL in `.env`

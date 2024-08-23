@@ -5,7 +5,7 @@ import (
 	"log/slog"
 	"sync"
 
-	"github.com/1layar/merasa/backend/package/logger"
+	"github.com/1layar/universe/package/logger"
 	"github.com/ThreeDotsLabs/watermill"
 	"github.com/ThreeDotsLabs/watermill/pubsub/gochannel"
 	mbroker "go-micro.dev/v4/broker"

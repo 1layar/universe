@@ -3,7 +3,7 @@ package db
 import (
 	"database/sql"
 
-	"github.com/1layar/merasa/backend/src/account_service/internal/app/appconfig"
+	"github.com/1layar/universe/src/account_service/internal/app/appconfig"
 	"github.com/uptrace/bun"
 	"github.com/uptrace/bun/dialect/pgdialect"
 	"github.com/uptrace/bun/driver/pgdriver"

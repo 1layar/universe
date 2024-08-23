@@ -1,9 +1,9 @@
 package server
 
 import (
-	"github.com/1layar/merasa/backend/src/account_service/internal/server/watermill"
-	"github.com/1layar/merasa/backend/src/account_service/internal/server/watermill/command"
-	"github.com/1layar/merasa/backend/src/account_service/internal/server/watermill/route"
+	"github.com/1layar/universe/src/account_service/internal/server/watermill"
+	"github.com/1layar/universe/src/account_service/internal/server/watermill/command"
+	"github.com/1layar/universe/src/account_service/internal/server/watermill/route"
 	"go.uber.org/fx"
 )
 

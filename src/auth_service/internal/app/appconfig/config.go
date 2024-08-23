@@ -1,7 +1,7 @@
 package appconfig
 
 import (
-	"github.com/1layar/merasa/backend/src/auth_service/internal/app/appcontext"
+	"github.com/1layar/universe/src/auth_service/internal/app/appcontext"
 	_ "github.com/joho/godotenv/autoload"
 	"github.com/kelseyhightower/envconfig"
 )

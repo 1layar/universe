@@ -5,7 +5,7 @@ import (
 
 	"github.com/uptrace/bun"
 
-	"github.com/1layar/merasa/backend/src/cms_service/internal/model"
+	"github.com/1layar/universe/src/cms_service/internal/model"
 )
 
 type Post struct {

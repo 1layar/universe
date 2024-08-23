@@ -1,4 +1,4 @@
-module github.com/1layar/merasa/backend/src/api_gateway
+module github.com/1layar/universe/src/api_gateway
 
 go 1.22.0
 

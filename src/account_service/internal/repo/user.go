@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/1layar/merasa/backend/src/account_service/model"
-	"github.com/1layar/merasa/backend/src/account_service/model/dto"
+	"github.com/1layar/universe/src/account_service/model"
+	"github.com/1layar/universe/src/account_service/model/dto"
 	"github.com/uptrace/bun"
 )
 

@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/1layar/merasa/backend/src/shared/dto"
+	"github.com/1layar/universe/src/shared/dto"
 	"github.com/openfga/go-sdk/client"
 )
 

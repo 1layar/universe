@@ -1,7 +1,7 @@
 package watermill
 
 import (
-	"github.com/1layar/merasa/backend/src/api_gateway/internal/app/appconfig"
+	"github.com/1layar/universe/src/api_gateway/internal/app/appconfig"
 	"github.com/ThreeDotsLabs/watermill"
 	"github.com/ThreeDotsLabs/watermill-amqp/v2/pkg/amqp"
 )

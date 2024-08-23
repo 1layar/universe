@@ -3,9 +3,9 @@ package service
 import (
 	"context"
 
-	"github.com/1layar/merasa/backend/src/auth_service/internal/repo"
-	"github.com/1layar/merasa/backend/src/auth_service/model"
-	"github.com/1layar/merasa/backend/src/auth_service/model/dto"
+	"github.com/1layar/universe/src/auth_service/internal/repo"
+	"github.com/1layar/universe/src/auth_service/model"
+	"github.com/1layar/universe/src/auth_service/model/dto"
 )
 
 type SessionService struct {

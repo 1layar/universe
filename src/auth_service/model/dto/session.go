@@ -1,7 +1,7 @@
 package dto
 
 import (
-	"github.com/1layar/merasa/backend/src/auth_service/model"
+	"github.com/1layar/universe/src/auth_service/model"
 )
 
 type (

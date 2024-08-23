@@ -7,11 +7,11 @@ import (
 
 	"github.com/goccy/go-json"
 
-	"github.com/1layar/merasa/backend/src/api_gateway/internal/middleware"
-	"github.com/1layar/merasa/backend/src/shared/command"
-	"github.com/1layar/merasa/backend/src/shared/constant"
-	"github.com/1layar/merasa/backend/src/shared/dto"
-	"github.com/1layar/merasa/backend/src/shared/transport"
+	"github.com/1layar/universe/src/api_gateway/internal/middleware"
+	"github.com/1layar/universe/src/shared/command"
+	"github.com/1layar/universe/src/shared/constant"
+	"github.com/1layar/universe/src/shared/dto"
+	"github.com/1layar/universe/src/shared/transport"
 	"github.com/ThreeDotsLabs/watermill-amqp/v2/pkg/amqp"
 	"github.com/ThreeDotsLabs/watermill/components/cqrs"
 	"github.com/gofiber/fiber/v2"

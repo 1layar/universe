@@ -1,9 +1,9 @@
 package handler
 
 import (
-	"github.com/1layar/merasa/backend/src/shared/command"
-	"github.com/1layar/merasa/backend/src/shared/constant"
-	"github.com/1layar/merasa/backend/src/shared/transport"
+	"github.com/1layar/universe/src/shared/command"
+	"github.com/1layar/universe/src/shared/constant"
+	"github.com/1layar/universe/src/shared/transport"
 	"github.com/ThreeDotsLabs/watermill/components/requestreply"
 )
 

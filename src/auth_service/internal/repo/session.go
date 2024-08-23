@@ -3,8 +3,8 @@ package repo
 import (
 	"context"
 
-	"github.com/1layar/merasa/backend/src/auth_service/model"
-	"github.com/1layar/merasa/backend/src/auth_service/model/dto"
+	"github.com/1layar/universe/src/auth_service/model"
+	"github.com/1layar/universe/src/auth_service/model/dto"
 	"github.com/uptrace/bun"
 )
 

@@ -1,7 +1,7 @@
 package appconfig
 
 import (
-	"github.com/1layar/merasa/backend/src/api_gateway/internal/app/appcontext"
+	"github.com/1layar/universe/src/api_gateway/internal/app/appcontext"
 )
 
 // ConfigSpec is the configuration specification.

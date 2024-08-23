@@ -6,8 +6,8 @@ import (
 	"github.com/rs/zerolog/log"
 	"github.com/urfave/cli/v2"
 
-	"github.com/1layar/merasa/backend/src/api_gateway/cmd/app/cli/db"
-	"github.com/1layar/merasa/backend/src/api_gateway/cmd/app/server"
+	"github.com/1layar/universe/src/api_gateway/cmd/app/cli/db"
+	"github.com/1layar/universe/src/api_gateway/cmd/app/server"
 )
 
 func Run() {

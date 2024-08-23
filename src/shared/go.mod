@@ -1,4 +1,4 @@
-module github.com/1layar/merasa/backend/src/shared
+module github.com/1layar/universe/src/shared
 
 go 1.22.0
 

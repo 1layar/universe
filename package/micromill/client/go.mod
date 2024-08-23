@@ -1,4 +1,4 @@
-module github.com/1layar/merasa/backend/package/micromill/client
+module github.com/1layar/universe/package/micromill/client
 
 go 1.22.0
 

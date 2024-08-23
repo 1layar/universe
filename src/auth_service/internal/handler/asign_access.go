@@ -3,9 +3,9 @@ package handler
 import (
 	"context"
 
-	"github.com/1layar/merasa/backend/src/shared/constant"
-	"github.com/1layar/merasa/backend/src/shared/dto"
-	"github.com/1layar/merasa/backend/src/shared/event"
+	"github.com/1layar/universe/src/shared/constant"
+	"github.com/1layar/universe/src/shared/dto"
+	"github.com/1layar/universe/src/shared/event"
 	"github.com/goccy/go-json"
 	"github.com/rs/zerolog/log"
 )

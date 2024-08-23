@@ -3,7 +3,7 @@ package infra
 import (
 	"go.uber.org/fx"
 
-	"github.com/1layar/merasa/backend/src/account_service/internal/infra/db"
+	"github.com/1layar/universe/src/account_service/internal/infra/db"
 )
 
 func Module() fx.Option {

@@ -3,10 +3,10 @@ package service
 import (
 	"context"
 
-	"github.com/1layar/merasa/backend/src/account_service/internal/repo"
-	"github.com/1layar/merasa/backend/src/account_service/model"
-	"github.com/1layar/merasa/backend/src/account_service/model/dto"
-	"github.com/1layar/merasa/backend/src/shared/utils"
+	"github.com/1layar/universe/src/account_service/internal/repo"
+	"github.com/1layar/universe/src/account_service/model"
+	"github.com/1layar/universe/src/account_service/model/dto"
+	"github.com/1layar/universe/src/shared/utils"
 )
 
 type User struct {

@@ -1,6 +1,6 @@
 package appconfig
 
-import "github.com/1layar/merasa/backend/src/product_catalog_service/internal/app/appcontext"
+import "github.com/1layar/universe/src/product_catalog_service/internal/app/appcontext"
 
 // ConfigSpec is the configuration specification.
 type ConfigSpec struct {

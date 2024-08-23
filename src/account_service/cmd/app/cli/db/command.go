@@ -8,8 +8,8 @@ import (
 	"github.com/urfave/cli/v2"
 	"go.uber.org/fx"
 
-	cliapp "github.com/1layar/merasa/backend/src/account_service/cmd/app/cli"
-	"github.com/1layar/merasa/backend/src/account_service/internal/infra/db/migrations"
+	cliapp "github.com/1layar/universe/src/account_service/cmd/app/cli"
+	"github.com/1layar/universe/src/account_service/internal/infra/db/migrations"
 	"github.com/rs/zerolog/log"
 )
 

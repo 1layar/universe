@@ -3,12 +3,12 @@ package controller
 import (
 	"context"
 
-	"github.com/1layar/merasa/backend/src/product_catalog_service/internal/service"
-	"github.com/1layar/merasa/backend/src/product_catalog_service/model"
-	"github.com/1layar/merasa/backend/src/shared/command"
-	"github.com/1layar/merasa/backend/src/shared/constant"
-	"github.com/1layar/merasa/backend/src/shared/event"
-	"github.com/1layar/merasa/backend/src/shared/transport"
+	"github.com/1layar/universe/src/product_catalog_service/internal/service"
+	"github.com/1layar/universe/src/product_catalog_service/model"
+	"github.com/1layar/universe/src/shared/command"
+	"github.com/1layar/universe/src/shared/constant"
+	"github.com/1layar/universe/src/shared/event"
+	"github.com/1layar/universe/src/shared/transport"
 	"github.com/ThreeDotsLabs/watermill-amqp/v2/pkg/amqp"
 	"github.com/ThreeDotsLabs/watermill/components/cqrs"
 	"github.com/ThreeDotsLabs/watermill/components/requestreply"

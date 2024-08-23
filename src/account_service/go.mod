@@ -1,4 +1,4 @@
-module github.com/1layar/merasa/backend/src/account_service
+module github.com/1layar/universe/src/account_service
 
 go 1.22
 
