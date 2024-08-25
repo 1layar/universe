@@ -3,17 +3,12 @@
 .PHONY: cli
 cli:
 	@set -e; \
-	wget -O gf https://github.com/gogf/gf/releases/latest/download/gf_$(shell go env GOOS)_$(shell go env GOARCH) && \
-	chmod +x gf && \
-	./gf install -y && \
-	rm ./gf
+	go work sync
+	echo "App is up-to-date";
 
 
 # Check and install CLI tool.
 .PHONY: cli.install
 cli.install:
 	@set -e; \
-	gaf -v > /dev/null 2>&1 || if [[ "$?" -ne "0" ]]; then \
-  		echo "GoFame CLI is not installed, start proceeding auto installation..."; \
-		make cli; \
-	fi;
+	make cli;

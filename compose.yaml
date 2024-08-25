@@ -3,6 +3,7 @@ version: '3.8'
 services:
   postgres:
     image: postgres:latest
+    container_name: postgres
     restart: always
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-user}
@@ -12,6 +13,8 @@ services:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    networks:
+      - internal
   openfga_migrate:
     depends_on:
       - postgres
@@ -23,6 +26,8 @@ services:
       - OPENFGA_DATASTORE_PASSWORD=${POSTGRES_PASSWORD:-password}
       - OPENFGA_DATASTORE_USERNAME=${POSTGRES_USER:-user}
       - OPENFGA_DATASTORE_URI=${DATABASE_URL}
+    networks:
+      - internal
   openfga:
     image: openfga/openfga:latest
     container_name: openfga
@@ -44,13 +49,18 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
+    networks:
+      - internal
   redis:
     image: redis:latest
+    container_name: redis
     restart: always
     ports:
       - "6378:6379"
     volumes:
       - redis_data:/data
+    networks:
+      - internal
   asynqmon:
     image: hibiken/asynqmon
     depends_on:
@@ -62,9 +72,12 @@ services:
       - PORT=3000
       - REDIS_ADDR=${REDIS_ADDR:-redis:6379}
     restart: unless-stopped
+    networks:
+      - internal
   rabbitmq:
     image: rabbitmq:3-management
     restart: always
+    container_name: rabbitmq
     ports:
       - "5672:5672"
       - "15672:15672"
@@ -73,7 +86,12 @@ services:
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-rabbitmq}
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - internal
 volumes:
   postgres_data:
   rabbitmq_data:
   redis_data:
+networks:
+  internal:
+    external: true

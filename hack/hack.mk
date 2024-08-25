@@ -1,35 +1,27 @@
 include ./hack/hack-cli.mk
 
-# Update GoFrame and its CLI to latest stable version.
-.PHONY: up
-up: cli.install
-	go work sync
+.PHONY: start
+start: cli.install
+	@set -e; \
+	if [ "$(filter gateway,$(MAKECMDGOALS))" ]; then \
+		$(MAKE) start-gateway; \
+	elif [ "$(filter service,$(MAKECMDGOALS))" ]; then \
+		$(MAKE) start-service; \
+	else \
+		echo "Unknown service command. Use 'make help' for available commands."; \
+	fi
+doc:
+	swag init --parseDependency -g ./internal/api_gateway/main.go
 
-# Build binary using configuration from hack/config.yaml.
-.PHONY: build
-build: cli.install
-	@gf build -ew
+.PHONY: start-gateway
+start-gateway:
+	@set -e; \
+	go run ./internal/api_gateway/main.go start
 
-# Parse api and generate controller/sdk.
-.PHONY: ctrl
-ctrl: cli.install
-	@gf gen ctrl
-
-# Generate Go files for DAO/DO/Entity.
-.PHONY: dao
-dao: cli.install
-	@gf gen dao
-
-# Parse current project go files and generate enums go file.
-.PHONY: enums
-enums: cli.install
-	@gf gen enums
-
-# Generate Go files for Service.
-.PHONY: service
-service: cli.install
-	@gf gen service
-
+.PHONY: start-service
+start-service:
+	@set -e; \
+	go run ./internal/$(name)_service/main.go start
 
 # Build docker image.
 .PHONY: image
@@ -40,7 +32,7 @@ ifneq (, $(shell git status --porcelain 2>/dev/null))
 endif
 	$(eval _TAG  = $(if ${TAG},  ${TAG}, $(_TAG)))
 	$(eval _PUSH = $(if ${PUSH}, ${PUSH}, ))
-	@gf docker ${_PUSH} -tn $(DOCKER_NAME):${_TAG};
+	@docker ${_PUSH} -tn $(DOCKER_NAME):${_TAG};
 
 
 # Build docker image and automatically push to docker repo.
@@ -63,13 +55,39 @@ deploy:
 		kubectl   patch -n $(NAMESPACE) deployment/$(DEPLOY_NAME) -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"$(shell date +%s)\"}}}}}"; \
 	fi;
 
+.PHONY: db
+db:
+	@if [ "$(filter create:migrate,$(MAKECMDGOALS))" ]; then \
+		$(MAKE) db-create-migrate; \
+	elif [ "$(filter run:migrate,$(MAKECMDGOALS))" ]; then \
+		$(MAKE) db-run-migrate; \
+	elif [ "$(filter run:seed,$(MAKECMDGOALS))" ]; then \
+		$(MAKE) db-run-seed; \
+	elif [ "$(filter run:init,$(MAKECMDGOALS))" ]; then \
+		$(MAKE) db-run-init; \
+	else \
+		echo "Unknown db command. Use 'make help' for available commands."; \
+	fi
 
-# Parsing protobuf files and generating go files.
-.PHONY: pb
-pb: cli.install
-	@gf gen pb
-
-# Generate protobuf files for database tables.
-.PHONY: pbentity
-pbentity: cli.install
-	@gf gen pbentity
+db-create-migrate:
+	@if [ -z "$(name)" ]; then \
+		read -p "Enter migration name: " name; \
+	fi; \
+	mkdir -p ./internal/$(service)_service/infra/db/migrations/sql; \
+	MIGRATION_DIR=./internal/$(service)_service/infra/db/migrations/sql; \
+	UP_FILE=$$MIGRATION_DIR/$(TIMESTAMP)_$$name.up.sql; \
+	DOWN_FILE=$$MIGRATION_DIR/$(TIMESTAMP)_$$name.down.sql; \
+	echo "Creating migration files..."; \
+	touch $$UP_FILE $$DOWN_FILE; \
+	echo "-- Migration up script for $$name" > $$UP_FILE; \
+	echo "-- Migration down script for $$name" > $$DOWN_FILE; \
+	echo "Created $$UP_FILE and $$DOWN_FILE"
+db-run-migrate:
+	@set -e; \
+	go run ./internal/$(service)_service/main.go migrate
+db-run-seed:
+	@set -e; \
+	go run ./internal/$(service)_service/main.go seed
+db-run-init:
+	@set -e; \
+	go run ./internal/$(service)_service/main.go db init

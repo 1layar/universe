@@ -37,7 +37,13 @@ func Command() *cli.Command {
 				Name:  "init",
 				Usage: "create migration tables",
 				Action: func(c *cli.Context) error {
-					return migrator().Init(c.Context)
+					err := migrator().Init(c.Context)
+
+					if err != nil {
+						log.Err(err).Msg("init migrations done")
+					}
+
+					return err
 				},
 			},
 			{
