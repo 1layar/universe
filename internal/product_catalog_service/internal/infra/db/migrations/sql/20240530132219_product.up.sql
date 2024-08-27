@@ -5,11 +5,13 @@ SET statement_timeout = 0;
 CREATE SCHEMA IF NOT EXISTS product_catalog;
 
 --bun:split
+
 CREATE TABLE product_catalog.products (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     code VARCHAR(255) NOT NULL,
-    status TINYINT NOT NULL,
+    kind SMALLINT NOT NULL,
+    status SMALLINT NOT NULL,
     fee MONEY NOT NULL,
     komisi MONEY NOT NULL,
     sku VARCHAR(255) NOT NULL UNIQUE,

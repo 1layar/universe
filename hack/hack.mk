@@ -65,6 +65,10 @@ db:
 		$(MAKE) db-run-seed; \
 	elif [ "$(filter run:init,$(MAKECMDGOALS))" ]; then \
 		$(MAKE) db-run-init; \
+	elif [ "$(filter run:rollback,$(MAKECMDGOALS))" ]; then \
+		$(MAKE) db-run-rollback; \
+	elif [ "$(filter run:status,$(MAKECMDGOALS))" ]; then \
+		$(MAKE) db-run-status; \
 	else \
 		echo "Unknown db command. Use 'make help' for available commands."; \
 	fi
@@ -75,8 +79,8 @@ db-create-migrate:
 	fi; \
 	mkdir -p ./internal/$(service)_service/infra/db/migrations/sql; \
 	MIGRATION_DIR=./internal/$(service)_service/infra/db/migrations/sql; \
-	UP_FILE=$$MIGRATION_DIR/$(TIMESTAMP)_$$name.up.sql; \
-	DOWN_FILE=$$MIGRATION_DIR/$(TIMESTAMP)_$$name.down.sql; \
+	UP_FILE=$$MIGRATION_DIR/$(TIMESTAMP)-$$name.up.sql; \
+	DOWN_FILE=$$MIGRATION_DIR/$(TIMESTAMP)-$$name.down.sql; \
 	echo "Creating migration files..."; \
 	touch $$UP_FILE $$DOWN_FILE; \
 	echo "-- Migration up script for $$name" > $$UP_FILE; \
@@ -84,10 +88,16 @@ db-create-migrate:
 	echo "Created $$UP_FILE and $$DOWN_FILE"
 db-run-migrate:
 	@set -e; \
-	go run ./internal/$(service)_service/main.go migrate
+	go run ./internal/$(service)_service/main.go db migrate
 db-run-seed:
 	@set -e; \
-	go run ./internal/$(service)_service/main.go seed
+	go run ./internal/$(service)_service/main.go db seed
 db-run-init:
 	@set -e; \
 	go run ./internal/$(service)_service/main.go db init
+db-run-rollback:
+	@set -e; \
+	go run ./internal/$(service)_service/main.go db rollback
+db-run-status:
+	@set -e; \
+	go run ./internal/$(service)_service/main.go db status
