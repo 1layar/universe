@@ -121,6 +121,47 @@ type TopUpResponse struct {
 	DataResponse[TopupData]
 }
 
+type InqueryGameServerRequest struct {
+	SignedRequest
+	GameCode string `json:"game_code"`
+}
+
+type Server struct {
+	Name  string `json:"name"`
+	Value string `json:"value"`
+}
+
+type CheckStatusRequest struct {
+	SignedRequest
+	RefId string `json:"ref_id"`
+}
+
+type InqueryGameServerData struct {
+	BaseData
+	Status  appconfig.IakStatusCode `json:"status"`
+	Servers []Server                `json:"servers"`
+}
+
+type InqueryGameServerResponse struct {
+	DataResponse[InqueryGameServerData]
+}
+
+type CheckStatusData struct {
+	BaseData
+	RefID       string `json:"ref_id"`
+	Status      int64  `json:"status"`
+	ProductCode string `json:"product_code"`
+	CustomerID  string `json:"customer_id"`
+	Price       int64  `json:"price"`
+	Sn          string `json:"sn"`
+	Balance     int64  `json:"balance"`
+	TrID        int64  `json:"tr_id"`
+}
+
+type CheckStatusResponse struct {
+	DataResponse[CheckStatusData]
+}
+
 func NewIakService(
 	cb *gobreaker.CircuitBreaker[[]byte],
 	config *appconfig.Config,
@@ -164,7 +205,7 @@ func (s *IakService) GetClient(additional string) *req.Client {
 
 func (s *IakService) SendIak(path string, body any, additional string) ([]byte, error) {
 	return s.Cb.Execute(func() ([]byte, error) {
-		url := s.config.IakUrl + path
+		url := s.config.IakPrepaidUrl + path
 		client := s.GetClient(additional)
 
 		resp, err := client.R().SetBodyJsonMarshal(body).Post(url)
@@ -303,6 +344,106 @@ func (s *IakService) TopUp(refId string, customerId string, productCode string) 
 
 	// unmarshal response
 	var data TopUpResponse
+	if err := json.Unmarshal(body, &data); err != nil {
+		return nil, err
+	}
+
+	return &data, nil
+}
+
+// API to top up prepaid products.
+// IAK will automatically detect the operator for each number in hp field that you send.
+// Change the pulsa_code field to one of the code we listed below to activate this feature.
+func (s *IakService) TopuPulsa(refId string, amount int64, hp string) (*TopUpResponse, error) {
+	body, err := s.SendIak(
+		"/api/topup",
+		TopUpRequest{
+			SignedRequest: SignedRequest{
+				Username: s.config.IakUsername,
+				Sign:     s.GetSign(hp),
+			},
+			CustomerId:  hp,
+			RefId:       refId,
+			ProductCode: fmt.Sprintf("pulsa%d", amount),
+		},
+		hp,
+	)
+
+	if err != nil {
+		return nil, err
+	}
+
+	// unmarshal response
+	var data TopUpResponse
+	if err := json.Unmarshal(body, &data); err != nil {
+		return nil, err
+	}
+
+	return &data, nil
+}
+
+// API to check game server list.
+func (s *IakService) InquiryGameServer(gameCode appconfig.ServerListCode) (*InqueryGameServerResponse, error) {
+	body, err := s.SendIak(
+		"/api/inquiry-game-server",
+		InqueryGameServerRequest{
+			SignedRequest: SignedRequest{
+				Username: s.config.IakUsername,
+				Sign:     s.GetSign(string(gameCode)),
+			},
+			GameCode: string(gameCode),
+		},
+		string(gameCode),
+	)
+
+	if err != nil {
+		return nil, err
+	}
+
+	// unmarshal response
+	var data InqueryGameServerResponse
+	if err := json.Unmarshal(body, &data); err != nil {
+		return nil, err
+	}
+
+	return &data, nil
+}
+
+func (s *IakService) GetGameFormat(gameCode appconfig.GameCode, info map[string]string) (string, error) {
+	codeTemplate := appconfig.CODE_TEMPLATE[gameCode]
+
+	for k, v := range info {
+		codeTemplate = strings.ReplaceAll(codeTemplate, "{"+k+"}", v)
+	}
+
+	// when there { and } throw error
+	if strings.Contains(codeTemplate, "{") || strings.Contains(codeTemplate, "}") {
+		return "", errors.New("mising code parameter")
+	}
+
+	return codeTemplate, nil
+}
+
+// API to check status prepaid transaction.
+func (s *IakService) CheckStatus(refId string) (*CheckStatusResponse, error) {
+	body, err := s.SendIak(
+		"/api/check-status",
+		CheckStatusRequest{
+			SignedRequest: SignedRequest{
+				Username: s.config.IakUsername,
+				Sign:     s.GetSign(refId),
+			},
+			RefId: refId,
+		},
+		refId,
+	)
+
+	if err != nil {
+		return nil, err
+	}
+
+	// unmarshal response
+	var data CheckStatusResponse
 	if err := json.Unmarshal(body, &data); err != nil {
 		return nil, err
 	}

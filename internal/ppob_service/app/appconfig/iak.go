@@ -82,3 +82,56 @@ const (
 	Success IakPlnInqueryStatus = "1"
 	Failed  IakPlnInqueryStatus = "2"
 )
+
+type GameCode string
+
+const (
+	GAME_103 GameCode = "103" //Mobile Legend		{userid}|{zoneid}
+	GAME_127 GameCode = "127" //Ragnarok		{userid}|{serverid}
+	GAME_130 GameCode = "130" //Point Blank		{userid}
+	GAME_135 GameCode = "135" //Free Fire		{userid}
+	GAME_136 GameCode = "136" //Speed Drifters		{userid}
+	GAME_139 GameCode = "139" //Arena of Valor		{userid}
+	GAME_140 GameCode = "140" //Bleach Mobile 3D		{rolename}|{userid}|{serverid}
+	GAME_141 GameCode = "141" //Era of Celestial		{rolename}|{userid}|{serverid}
+	GAME_142 GameCode = "142" //Dragon Nest		{rolename}|{serverid}
+	GAME_146 GameCode = "146" //Call of Duty		{userid}
+	GAME_150 GameCode = "150" //Marvel Super War		{userid}
+	GAME_152 GameCode = "152" //Light of Thel:Glory of Cepheus		{userid}
+	GAME_153 GameCode = "153" //Lords Mobile		{userid}
+	GAME_154 GameCode = "154" //Life After		{userid}|{serverid}
+	GAME_172 GameCode = "172" //Genshin Impact		{userid}|{serverid}
+	GAME_176 GameCode = "176" //LoL Wild Rift		{userid}|{tag}
+	GAME_230 GameCode = "230" //Heroes Evolved		{userid}|{serverid}
+)
+
+var CODE_TEMPLATE = map[GameCode]string{
+	GAME_103: "{userid}|{zoneid}",
+	GAME_127: "{userid}|{serverid}",
+	GAME_130: "{userid}",
+	GAME_135: "{userid}",
+	GAME_136: "{userid}",
+	GAME_139: "{userid}",
+	GAME_140: "{rolename}|{userid}|{serverid}",
+	GAME_141: "{rolename}|{userid}|{serverid}",
+	GAME_142: "{rolename}|{serverid}",
+	GAME_146: "{userid}",
+	GAME_150: "{userid}",
+	GAME_152: "{userid}",
+	GAME_153: "{userid}",
+	GAME_154: "{userid}|{serverid}",
+	GAME_172: "{userid}|{serverid}",
+	GAME_176: "{userid}|{tag}",
+	GAME_230: "{userid}|{serverid}",
+}
+
+type ServerListCode string
+
+const (
+	SERVER_CODE_103 ServerListCode = "103" //Mobile Legend
+	SERVER_CODE_127 ServerListCode = "127" //Ragnarok
+	SERVER_CODE_140 ServerListCode = "140" //Bleach Mobile 3D
+	SERVER_CODE_141 ServerListCode = "141" //Era of Celestials
+	SERVER_CODE_142 ServerListCode = "142" //Dragon Nest
+	SERVER_CODE_172 ServerListCode = "172" //Genshin Impact
+)
