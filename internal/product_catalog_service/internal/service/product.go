@@ -4,8 +4,8 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/1layar/universe/pkg/product_catalog_service/internal/repo"
-	"github.com/1layar/universe/pkg/product_catalog_service/model"
+	"github.com/1layar/universe/internal/product_catalog_service/internal/repo"
+	"github.com/1layar/universe/internal/product_catalog_service/model"
 	"github.com/1layar/universe/pkg/shared/repository"
 	"github.com/1layar/universe/pkg/shared/service"
 	"github.com/uptrace/bun"

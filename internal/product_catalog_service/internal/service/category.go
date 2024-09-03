@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/1layar/universe/pkg/product_catalog_service/internal/repo"
-	"github.com/1layar/universe/pkg/product_catalog_service/model"
+	"github.com/1layar/universe/internal/product_catalog_service/internal/repo"
+	"github.com/1layar/universe/internal/product_catalog_service/model"
 	"github.com/1layar/universe/pkg/shared/service"
 )
 

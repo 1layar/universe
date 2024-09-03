@@ -3,8 +3,8 @@ package controller
 import (
 	"context"
 
-	"github.com/1layar/universe/pkg/product_catalog_service/internal/service"
-	"github.com/1layar/universe/pkg/product_catalog_service/model"
+	"github.com/1layar/universe/internal/product_catalog_service/internal/service"
+	"github.com/1layar/universe/internal/product_catalog_service/model"
 	"github.com/1layar/universe/pkg/shared/command"
 	"github.com/1layar/universe/pkg/shared/constant"
 	"github.com/1layar/universe/pkg/shared/event"

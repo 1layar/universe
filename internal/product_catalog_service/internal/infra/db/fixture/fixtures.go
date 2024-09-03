@@ -6,7 +6,7 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/1layar/universe/pkg/product_catalog_service/model"
+	"github.com/1layar/universe/internal/product_catalog_service/model"
 	"github.com/uptrace/bun"
 	"github.com/uptrace/bun/dbfixture"
 )

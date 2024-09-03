@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/1layar/universe/pkg/product_catalog_service/cmd/app"
+	"github.com/1layar/universe/internal/product_catalog_service/cmd/app"
 	"github.com/rs/zerolog/log"
 )
 

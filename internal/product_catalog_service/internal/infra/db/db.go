@@ -3,12 +3,12 @@ package db
 import (
 	"database/sql"
 
-	"github.com/1layar/universe/pkg/product_catalog_service/internal/app/appconfig"
+	"github.com/1layar/universe/internal/product_catalog_service/internal/app/appconfig"
 	"github.com/uptrace/bun"
 	"github.com/uptrace/bun/dialect/pgdialect"
 	"github.com/uptrace/bun/driver/pgdriver"
 
-	"github.com/1layar/universe/pkg/product_catalog_service/model"
+	"github.com/1layar/universe/internal/product_catalog_service/model"
 )
 
 func New(config *appconfig.Config) *bun.DB {

@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"github.com/1layar/universe/pkg/product_catalog_service/internal/service"
+	"github.com/1layar/universe/internal/product_catalog_service/internal/service"
 	"github.com/ThreeDotsLabs/watermill-amqp/v2/pkg/amqp"
 	"github.com/ThreeDotsLabs/watermill/components/cqrs"
 	"go.uber.org/fx"
