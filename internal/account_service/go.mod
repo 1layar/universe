@@ -8,10 +8,10 @@ require (
 	github.com/joho/godotenv v1.5.1
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/pkg/errors v0.9.1
-	github.com/rs/zerolog v1.32.0
-	github.com/uptrace/bun v1.2.1
-	github.com/uptrace/bun/dialect/pgdialect v1.2.1
-	github.com/uptrace/bun/driver/pgdriver v1.2.1
+	github.com/rs/zerolog v1.33.0
+	github.com/uptrace/bun v1.2.3
+	github.com/uptrace/bun/dialect/pgdialect v1.2.3
+	github.com/uptrace/bun/driver/pgdriver v1.2.3
 	github.com/urfave/cli/v2 v2.27.1
 	go-micro.dev/v4 v4.10.2
 	go.opentelemetry.io/otel v1.17.0
@@ -43,6 +43,7 @@ require (
 	github.com/oklog/ulid v1.3.1 // indirect
 	github.com/oxtoacart/bpool v0.0.0-20190530202638-03653db5a59c // indirect
 	github.com/patrickmn/go-cache v2.1.0+incompatible // indirect
+	github.com/puzpuzpuz/xsync/v3 v3.4.0 // indirect
 	github.com/rabbitmq/amqp091-go v1.9.0 // indirect
 	github.com/rogpeppe/go-internal v1.11.0 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
@@ -58,11 +59,11 @@ require (
 	go.uber.org/dig v1.17.0 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
 	go.uber.org/zap v1.23.0 // indirect
-	golang.org/x/crypto v0.23.0 // indirect
+	golang.org/x/crypto v0.26.0 // indirect
 	golang.org/x/net v0.25.0 // indirect
-	golang.org/x/sync v0.7.0 // indirect
-	golang.org/x/sys v0.21.0 // indirect
-	golang.org/x/text v0.15.0 // indirect
+	golang.org/x/sync v0.8.0 // indirect
+	golang.org/x/sys v0.24.0 // indirect
+	golang.org/x/text v0.17.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	mellium.im/sasl v0.3.1 // indirect

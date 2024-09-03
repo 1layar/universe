@@ -9,8 +9,8 @@ require (
 	github.com/go-playground/universal-translator v0.18.1
 	github.com/go-playground/validator/v10 v10.18.0
 	github.com/iancoleman/strcase v0.3.0
-	github.com/uptrace/bun v1.2.1
-	golang.org/x/crypto v0.23.0
+	github.com/uptrace/bun v1.2.3
+	golang.org/x/crypto v0.26.0
 )
 
 require (
@@ -25,12 +25,13 @@ require (
 	github.com/lithammer/shortuuid/v3 v3.0.7 // indirect
 	github.com/oklog/ulid v1.3.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
+	github.com/puzpuzpuz/xsync/v3 v3.4.0 // indirect
 	github.com/rabbitmq/amqp091-go v1.9.0 // indirect
 	github.com/stretchr/testify v1.9.0 // indirect
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	golang.org/x/net v0.25.0 // indirect
-	golang.org/x/sys v0.21.0 // indirect
-	golang.org/x/text v0.15.0 // indirect
+	golang.org/x/sys v0.24.0 // indirect
+	golang.org/x/text v0.17.0 // indirect
 )

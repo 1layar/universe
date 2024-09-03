@@ -1,4 +1,4 @@
-go 1.22.2
+go 1.23.0
 
 use (
 	./internal/account_service
@@ -6,10 +6,12 @@ use (
 	./internal/auth_service
 	./internal/cms_service
 	./internal/email_service
+	./internal/ppob_service
 	./internal/product_catalog_service
 	./pkg/logger
 	./pkg/micromill/broker
 	./pkg/micromill/client
 	./pkg/micromill/server
+	./pkg/migrator
 	./pkg/shared
 )
