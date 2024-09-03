@@ -21,6 +21,15 @@ type ConfigSpec struct {
 
 	// RabbitMQ
 	AmqpUrl string `split_words:"true" required:"true" default:"amqp://guest:guest@localhost:5672/"`
+
+	// Iak Base Url
+	IakUrl string `split_words:"true" required:"true"`
+
+	// Iak Username
+	IakUsername string `split_words:"true" required:"true"`
+
+	// Iak Api Key
+	IakApiKey string `split_words:"true" required:"true"`
 }
 
 type Config struct {
