@@ -2,6 +2,7 @@ package service
 
 import (
 	"crypto/md5"
+	"encoding/hex"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -190,7 +191,7 @@ func (s *IakService) GetSign(additional string) string {
 	username := s.config.IakUsername
 	apiKey := s.config.IakApiKey
 	md5Sign := md5.Sum([]byte(username + apiKey + additional))
-	return string(md5Sign[:])
+	return hex.EncodeToString(md5Sign[:])
 }
 
 // GetClient returns a req.Client with the "username" and "sign" headers set using the

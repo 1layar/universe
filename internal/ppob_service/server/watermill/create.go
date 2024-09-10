@@ -2,6 +2,7 @@ package watermill
 
 import (
 	"github.com/1layar/universe/internal/ppob_service/app/appconfig"
+	"github.com/1layar/universe/pkg/logger"
 	"github.com/ThreeDotsLabs/watermill"
 	"github.com/ThreeDotsLabs/watermill-amqp/v2/pkg/amqp"
 )
@@ -18,6 +19,7 @@ func CreateSub(config *appconfig.Config) *amqp.Subscriber {
 		watermill.NewStdLogger(false, false),
 	)
 	if err != nil {
+		logger.GetLogger().Error(err)
 		panic(err)
 	}
 
@@ -28,6 +30,7 @@ func CreatePub(config *appconfig.Config) *amqp.Publisher {
 	amqpConfig := amqp.NewDurableQueueConfig(config.AmqpUrl)
 	publisher, err := amqp.NewPublisher(amqpConfig, watermill.NewStdLogger(false, false))
 	if err != nil {
+		logger.GetLogger().Error(err)
 		panic(err)
 	}
 

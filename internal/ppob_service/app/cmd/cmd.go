@@ -4,6 +4,7 @@ import (
 	"os"
 
 	"github.com/1layar/universe/internal/ppob_service/app/cmd/cli/db"
+	"github.com/1layar/universe/internal/ppob_service/app/cmd/cli/iak"
 	"github.com/1layar/universe/internal/ppob_service/app/cmd/server"
 
 	"github.com/rs/zerolog/log"
@@ -17,6 +18,7 @@ func Run(name string, version string) {
 		Commands: []*cli.Command{
 			server.Command(),
 			db.Command(),
+			iak.Command(),
 		},
 	}
 	if err := app.Run(os.Args); err != nil {

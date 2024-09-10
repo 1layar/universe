@@ -18,6 +18,11 @@ start-gateway:
 	@set -e; \
 	go run ./internal/api_gateway/main.go start
 
+.PHONY: run-cmd
+run-cmd:
+	@set -e; \
+	go run ./internal/$(name)_service/main.go $(cmd)
+
 .PHONY: start-service
 start-service:
 	@set -e; \
