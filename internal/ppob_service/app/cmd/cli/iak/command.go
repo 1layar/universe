@@ -1,6 +1,7 @@
 package iak
 
 import (
+	"github.com/1layar/universe/internal/ppob_service/app/appconfig"
 	cliapp "github.com/1layar/universe/internal/ppob_service/app/cmd/cli"
 	"github.com/1layar/universe/internal/ppob_service/service"
 	"github.com/1layar/universe/pkg/logger"
@@ -41,6 +42,25 @@ func Command() *cli.Command {
 					}
 
 					return cli.Exit(balance, 0)
+				},
+			},
+			{
+				Name:  "price-list",
+				Usage: "get iak price list",
+				Action: func(c *cli.Context) error {
+					log.Info("get iak price list...")
+					priceList, err := iakService.GetPriceList(
+						appconfig.Pulsa,
+						appconfig.PulsaAxis,
+						appconfig.All,
+					)
+
+					if err != nil {
+						log.Error("failed to get iak price list")
+						return cli.Exit(err, 1)
+					}
+
+					return cli.Exit(priceList, 0)
 				},
 			},
 		},

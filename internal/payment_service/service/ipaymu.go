@@ -34,8 +34,8 @@ type IpaymuBaseResponse[T any] struct {
 
 type IpaymuCheckBalance struct {
 	Va              string `json:"Va"`
-	MerchantBalance string `json:"MerchantBalance"`
-	MemberBalance   string `json:"MemberBalance"`
+	MerchantBalance int64  `json:"MerchantBalance"`
+	MemberBalance   int64  `json:"MemberBalance"`
 }
 
 type IpaymuCheckTransactionResponse struct {
@@ -197,7 +197,7 @@ type IpaymuService struct {
 	logger *zap.SugaredLogger
 }
 
-func NewPaymuService(
+func NewIPaymuService(
 	cb *gobreaker.CircuitBreaker[[]byte],
 	config *appconfig.Config,
 ) *IpaymuService {
