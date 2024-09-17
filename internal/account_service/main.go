@@ -1,6 +1,6 @@
 package main
 
-import "github.com/1layar/universe/pkg/account_service/cmd/app"
+import "github.com/1layar/universe/internal/account_service/cmd/app"
 
 var (
 	name    = "account_service"

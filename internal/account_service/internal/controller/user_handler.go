@@ -3,8 +3,8 @@ package controller
 import (
 	"context"
 
-	"github.com/1layar/universe/pkg/account_service/internal/service"
-	"github.com/1layar/universe/pkg/account_service/model/dto"
+	"github.com/1layar/universe/internal/account_service/internal/service"
+	"github.com/1layar/universe/internal/account_service/model/dto"
 	"github.com/1layar/universe/pkg/shared/command"
 	"github.com/ThreeDotsLabs/watermill-amqp/v2/pkg/amqp"
 	"github.com/ThreeDotsLabs/watermill/components/cqrs"

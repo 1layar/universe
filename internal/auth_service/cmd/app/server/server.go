@@ -7,9 +7,9 @@ import (
 	"github.com/rs/zerolog/log"
 	"go.uber.org/fx"
 
-	"github.com/1layar/universe/pkg/auth_service/internal/app"
-	"github.com/1layar/universe/pkg/auth_service/internal/app/appconfig"
-	"github.com/1layar/universe/pkg/auth_service/internal/app/appcontext"
+	"github.com/1layar/universe/internal/auth_service/internal/app"
+	"github.com/1layar/universe/internal/auth_service/internal/app/appconfig"
+	"github.com/1layar/universe/internal/auth_service/internal/app/appcontext"
 )
 
 func Run() {

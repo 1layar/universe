@@ -3,8 +3,8 @@ package service
 import (
 	"context"
 
-	"github.com/1layar/universe/pkg/cms_service/internal/model"
-	"github.com/1layar/universe/pkg/cms_service/internal/repo"
+	"github.com/1layar/universe/internal/cms_service/internal/model"
+	"github.com/1layar/universe/internal/cms_service/internal/repo"
 )
 
 type Post struct {

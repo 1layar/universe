@@ -4,8 +4,8 @@ import (
 	"github.com/goccy/go-json"
 	"go.uber.org/fx"
 
-	"github.com/1layar/universe/pkg/email_service/internal/dto"
-	"github.com/1layar/universe/pkg/email_service/internal/service"
+	"github.com/1layar/universe/internal/email_service/internal/dto"
+	"github.com/1layar/universe/internal/email_service/internal/service"
 	"github.com/1layar/universe/pkg/shared/constant"
 	"github.com/1layar/universe/pkg/shared/event"
 	"github.com/ThreeDotsLabs/watermill-amqp/v2/pkg/amqp"

@@ -7,9 +7,9 @@ import (
 	"fmt"
 	ttemplate "text/template"
 
-	"github.com/1layar/universe/pkg/email_service/internal/app/appconfig"
-	"github.com/1layar/universe/pkg/email_service/internal/dto"
-	"github.com/1layar/universe/pkg/email_service/model"
+	"github.com/1layar/universe/internal/email_service/internal/app/appconfig"
+	"github.com/1layar/universe/internal/email_service/internal/dto"
+	"github.com/1layar/universe/internal/email_service/model"
 	"github.com/hibiken/asynq"
 )
 

@@ -3,8 +3,8 @@ package app
 import (
 	"os"
 
-	"github.com/1layar/universe/pkg/auth_service/cmd/app/cli/db"
-	"github.com/1layar/universe/pkg/auth_service/cmd/app/server"
+	"github.com/1layar/universe/internal/auth_service/cmd/app/cli/db"
+	"github.com/1layar/universe/internal/auth_service/cmd/app/server"
 
 	"github.com/rs/zerolog/log"
 	"github.com/urfave/cli/v2"

@@ -3,8 +3,8 @@ package service
 import (
 	"context"
 
-	"github.com/1layar/universe/pkg/email_service/internal/repo"
-	"github.com/1layar/universe/pkg/email_service/model"
+	"github.com/1layar/universe/internal/email_service/internal/repo"
+	"github.com/1layar/universe/internal/email_service/model"
 )
 
 type emailMessageService struct {

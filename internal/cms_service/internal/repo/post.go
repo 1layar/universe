@@ -5,7 +5,7 @@ import (
 
 	"github.com/uptrace/bun"
 
-	"github.com/1layar/universe/pkg/cms_service/internal/model"
+	"github.com/1layar/universe/internal/cms_service/internal/model"
 )
 
 type Post struct {

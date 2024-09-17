@@ -4,7 +4,7 @@ import (
 	"context"
 	"crypto/tls"
 
-	"github.com/1layar/universe/pkg/email_service/model"
+	"github.com/1layar/universe/internal/email_service/model"
 	"gopkg.in/gomail.v2"
 )
 

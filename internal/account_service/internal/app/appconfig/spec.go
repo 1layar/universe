@@ -1,6 +1,6 @@
 package appconfig
 
-import "github.com/1layar/universe/pkg/account_service/internal/app/appcontext"
+import "github.com/1layar/universe/internal/account_service/internal/app/appcontext"
 
 // ConfigSpec is the configuration specification.
 type ConfigSpec struct {

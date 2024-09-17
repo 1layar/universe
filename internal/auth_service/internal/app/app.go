@@ -1,15 +1,15 @@
 package app
 
 import (
-	"github.com/1layar/universe/pkg/auth_service/internal/app/appconfig"
-	"github.com/1layar/universe/pkg/auth_service/internal/app/appcontext"
-	"github.com/1layar/universe/pkg/auth_service/internal/handler"
-	"github.com/1layar/universe/pkg/auth_service/internal/infra"
-	"github.com/1layar/universe/pkg/auth_service/internal/repo"
-	"github.com/1layar/universe/pkg/auth_service/internal/server"
-	"github.com/1layar/universe/pkg/auth_service/internal/service"
-	"github.com/1layar/universe/pkg/auth_service/internal/x/logger"
-	"github.com/1layar/universe/pkg/auth_service/internal/x/logger/fxlogger"
+	"github.com/1layar/universe/internal/auth_service/internal/app/appconfig"
+	"github.com/1layar/universe/internal/auth_service/internal/app/appcontext"
+	"github.com/1layar/universe/internal/auth_service/internal/handler"
+	"github.com/1layar/universe/internal/auth_service/internal/infra"
+	"github.com/1layar/universe/internal/auth_service/internal/repo"
+	"github.com/1layar/universe/internal/auth_service/internal/server"
+	"github.com/1layar/universe/internal/auth_service/internal/service"
+	"github.com/1layar/universe/internal/auth_service/internal/x/logger"
+	"github.com/1layar/universe/internal/auth_service/internal/x/logger/fxlogger"
 	"github.com/rs/zerolog/log"
 	"go.uber.org/fx"
 )

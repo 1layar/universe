@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/1layar/universe/pkg/email_service/cmd/app"
+	"github.com/1layar/universe/internal/email_service/cmd/app"
 
 	"github.com/rs/zerolog/log"
 )

@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/1layar/universe/pkg/email_service/model"
+	"github.com/1layar/universe/internal/email_service/model"
 
 	"github.com/uptrace/bun"
 )

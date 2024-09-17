@@ -7,9 +7,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/1layar/universe/pkg/auth_service/internal/app/appconfig"
-	"github.com/1layar/universe/pkg/auth_service/model"
-	"github.com/1layar/universe/pkg/auth_service/model/dto"
+	"github.com/1layar/universe/internal/auth_service/internal/app/appconfig"
+	"github.com/1layar/universe/internal/auth_service/model"
+	"github.com/1layar/universe/internal/auth_service/model/dto"
 	"github.com/1layar/universe/pkg/shared/command"
 	"github.com/1layar/universe/pkg/shared/constant"
 	"github.com/1layar/universe/pkg/shared/transport"

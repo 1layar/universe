@@ -3,9 +3,9 @@ package service
 import (
 	"context"
 
-	"github.com/1layar/universe/pkg/auth_service/internal/repo"
-	"github.com/1layar/universe/pkg/auth_service/model"
-	"github.com/1layar/universe/pkg/auth_service/model/dto"
+	"github.com/1layar/universe/internal/auth_service/internal/repo"
+	"github.com/1layar/universe/internal/auth_service/model"
+	"github.com/1layar/universe/internal/auth_service/model/dto"
 )
 
 type SessionService struct {

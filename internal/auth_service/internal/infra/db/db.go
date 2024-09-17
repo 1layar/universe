@@ -7,7 +7,7 @@ import (
 	"github.com/uptrace/bun/dialect/pgdialect"
 	"github.com/uptrace/bun/driver/pgdriver"
 
-	"github.com/1layar/universe/pkg/auth_service/internal/app/appconfig"
+	"github.com/1layar/universe/internal/auth_service/internal/app/appconfig"
 )
 
 func New(config *appconfig.Config) *bun.DB {

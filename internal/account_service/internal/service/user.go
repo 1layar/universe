@@ -3,9 +3,9 @@ package service
 import (
 	"context"
 
-	"github.com/1layar/universe/pkg/account_service/internal/repo"
-	"github.com/1layar/universe/pkg/account_service/model"
-	"github.com/1layar/universe/pkg/account_service/model/dto"
+	"github.com/1layar/universe/internal/account_service/internal/repo"
+	"github.com/1layar/universe/internal/account_service/model"
+	"github.com/1layar/universe/internal/account_service/model/dto"
 	"github.com/1layar/universe/pkg/shared/utils"
 )
 

@@ -1,4 +1,4 @@
-module github.com/1layar/universe/pkg/cms_service
+module github.com/1layar/universe/internal/cms_service
 
 go 1.22.0
 

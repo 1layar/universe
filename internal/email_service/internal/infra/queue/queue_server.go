@@ -3,7 +3,7 @@ package queue
 import (
 	"github.com/hibiken/asynq"
 
-	"github.com/1layar/universe/pkg/email_service/internal/app/appconfig"
+	"github.com/1layar/universe/internal/email_service/internal/app/appconfig"
 )
 
 func NewServer(config *appconfig.Config) *asynq.Server {

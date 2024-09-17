@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/1layar/universe/pkg/account_service/model"
-	"github.com/1layar/universe/pkg/account_service/model/dto"
+	"github.com/1layar/universe/internal/account_service/model"
+	"github.com/1layar/universe/internal/account_service/model/dto"
 	"github.com/uptrace/bun"
 )
 

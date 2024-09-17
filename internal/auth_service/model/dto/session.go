@@ -1,7 +1,7 @@
 package dto
 
 import (
-	"github.com/1layar/universe/pkg/auth_service/model"
+	"github.com/1layar/universe/internal/auth_service/model"
 )
 
 type (
