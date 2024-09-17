@@ -281,7 +281,7 @@ func (s *IpaymuService) SendIpaymuGet(path string, body any) ([]byte, error) {
 		if err != nil {
 			return nil, err
 		}
-		signature, err := s.GenSignature("GET", []byte(""))
+		signature, err := s.GenSignature("GET", bodySign)
 
 		if err != nil {
 			return nil, err
@@ -289,7 +289,11 @@ func (s *IpaymuService) SendIpaymuGet(path string, body any) ([]byte, error) {
 
 		client := s.GetClient(string(signature))
 
-		resp, err := client.R().SetBody(bodySign).Get(url)
+		for k, v := range body.(map[string]string) {
+			client.AddCommonQueryParam(k, v)
+		}
+
+		resp, err := client.R().Get(url)
 		if err != nil {
 			return nil, err
 		}

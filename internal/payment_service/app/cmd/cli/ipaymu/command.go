@@ -40,6 +40,20 @@ func Command() *cli.Command {
 					return cli.Exit(balance, 0)
 				},
 			},
+			{
+				Name:  "payment-channels",
+				Usage: "get ipaymu payment channels",
+				Action: func(c *cli.Context) error {
+					log.Info("get ipaymu payment channels...")
+					paymentChannels, err := ipaymuService.IpaymuPaymentMethod()
+					if err != nil {
+						log.Error("failed to get ipaymu payment channels")
+						return cli.Exit(err, 1)
+					}
+
+					return cli.Exit(paymentChannels, 0)
+				},
+			},
 		},
 	}
 }
