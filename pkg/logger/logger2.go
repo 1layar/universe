@@ -68,9 +68,7 @@ func newLogger() *Logger {
 	config.Level.SetLevel(level)
 	zapLogger, _ = config.Build()
 
-	globalLog := zapLogger.Sugar().With(
-		zap.String("service", "ppob"),
-	)
+	globalLog := zapLogger.Sugar()
 
 	return &Logger{
 		SugaredLogger: globalLog,

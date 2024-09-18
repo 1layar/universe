@@ -4,10 +4,12 @@
 CREATE SCHEMA IF NOT EXISTS payment;
 
 -- bun:split
-CREATE TYPE IF NOT EXISTS payment.transaction_type AS ENUM ('sell', 'refund', 'buy');
+DROP TYPE IF EXISTS payment.transaction_type;
+CREATE TYPE payment.transaction_type AS ENUM ('sell', 'refund', 'buy');
 
 -- bun:split
-CREATE TYPE IF NOT EXISTS payment.transaction_status AS ENUM ('pending', 'success', 'failed');
+DROP TYPE IF EXISTS payment.transaction_status;
+CREATE TYPE payment.transaction_status AS ENUM ('pending', 'success', 'failed');
 
 -- bun:split
 CREATE TABLE payment.transactions (
@@ -27,6 +29,6 @@ CREATE TABLE payment.transactions (
     to_account INTEGER NOT NULL REFERENCES payment.accounts(id),
     fee DECIMAL(10, 2) NOT NULL,
     parent_id INTEGER REFERENCES payment.transactions(id),
-    created_at TIMESTAMP NOT NULL
+    created_at TIMESTAMP NOT NULL,
     updated_at TIMESTAMP
 )
