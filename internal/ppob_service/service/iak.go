@@ -45,7 +45,7 @@ type CheckBalanceResponse struct {
 	DataResponse[CheckBalanceData]
 }
 
-type Product struct {
+type IakProduct struct {
 	ProductCode        string                     `json:"product_code"`
 	ProductDescription string                     `json:"product_description"`
 	ProductNominal     string                     `json:"product_nominal"`
@@ -68,7 +68,7 @@ type AccountPlan struct {
 }
 
 type PriceListData struct {
-	PriceList []Product `json:"pricelist"`
+	PriceList []IakProduct `json:"pricelist"`
 	BaseData
 }
 

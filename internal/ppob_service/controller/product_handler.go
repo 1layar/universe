@@ -93,7 +93,7 @@ func (h ProductHandler) HandleGetAllProduct(ctx context.Context, cmd *command.Ge
 		productResults[i] = command.ProductResult{
 			ID:          product.ID,
 			Name:        product.Name,
-			SKU:         product.SKU,
+			SKU:         product.Code,
 			Description: product.Description,
 			PictureURL:  product.PictureURL,
 			Quantity:    product.Quantity,
@@ -125,7 +125,7 @@ func (h ProductHandler) HandleAddProduct(ctx context.Context, cmd *command.AddPr
 	}
 	product := &model.Product{
 		Name:        cmd.Name,
-		SKU:         cmd.SKU,
+		Code:        cmd.SKU,
 		Description: cmd.Description,
 		PictureURL:  cmd.PictureURL,
 		Quantity:    cmd.Quantity,
@@ -171,7 +171,7 @@ func (h ProductHandler) HandleAddUpdate(ctx context.Context, cmd *command.Update
 	}
 	product := &model.Product{
 		Name:        cmd.Name,
-		SKU:         cmd.SKU,
+		Code:        cmd.SKU,
 		Description: cmd.Description,
 		PictureURL:  cmd.PictureURL,
 		Quantity:    cmd.Quantity,
