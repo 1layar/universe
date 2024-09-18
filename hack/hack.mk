@@ -84,8 +84,8 @@ db-create-migrate:
 	fi; \
 	mkdir -p ./internal/$(service)_service/infra/db/migrations/sql; \
 	MIGRATION_DIR=./internal/$(service)_service/infra/db/migrations/sql; \
-	UP_FILE=$$MIGRATION_DIR/$(TIMESTAMP)-$$name.up.sql; \
-	DOWN_FILE=$$MIGRATION_DIR/$(TIMESTAMP)-$$name.down.sql; \
+	UP_FILE=$$MIGRATION_DIR/$(TIMESTAMP)_$$name.up.sql; \
+	DOWN_FILE=$$MIGRATION_DIR/$(TIMESTAMP)_$$name.down.sql; \
 	echo "Creating migration files..."; \
 	touch $$UP_FILE $$DOWN_FILE; \
 	echo "-- Migration up script for $$name" > $$UP_FILE; \
