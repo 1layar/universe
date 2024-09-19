@@ -1,7 +1,7 @@
 package repo
 
 import (
-	"github.com/1layar/universe/internal/product_catalog_service/model"
+	"github.com/1layar/universe/internal/ppob_service/model"
 	"github.com/1layar/universe/pkg/shared/repository"
 	"github.com/uptrace/bun"
 )

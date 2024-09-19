@@ -1,20 +1,46 @@
 package model
 
 import (
+	"time"
+
 	"github.com/uptrace/bun"
+)
+
+type ProductKind string
+
+const (
+	KindPrepaid  ProductKind = "prepaid"
+	KindPostpaid ProductKind = "postpaid"
+)
+
+type ProductStatus string
+
+const (
+	StatusActive   ProductStatus = "active"
+	StatusInactive ProductStatus = "inactive"
 )
 
 type Product struct {
 	bun.BaseModel `bun:"table:ppob.products,alias:p"`
 
-	ID          int    `bun:"id,pk,autoincrement"`
-	Name        string `bun:"name,notnull"`
-	SKU         string `bun:"sku,notnull,unique"`
-	Description string `bun:"description,notnull"`
-	PictureURL  string `bun:"picture_url,notnull"`
-	Quantity    int    `bun:"quantity,notnull"`
-	Price       string `bun:"price,notnull"`
-
+	ID           int           `bun:"id,pk,autoincrement"`
+	Kind         ProductKind   `bun:"kind,notnull"`
+	Code         string        `bun:"product_code,notnull,unique"`
+	Description  string        `bun:"product_description,notnull"`
+	Nominal      string        `bun:"product_nominal,notnull"`
+	Details      string        `bun:"product_details"`
+	Price        float64       `bun:"product_price,notnull"`
+	TypeId       int           `bun:"product_type_id,notnull"`
+	ActivePeriod *int          `bun:"active_period"`
+	Status       ProductStatus `bun:"status,notnull"`
+	IconURL      string        `bun:"icon_url"`
+	CategoryId   int           `bun:"product_category_id,notnull"`
+	BillingCycle *int          `bun:"billing_cycle"`
+	DueDate      *time.Time    `bun:"due_date"`
+	GracePeriod  *int          `bun:"grace_period"`
 	// many-to-many relationship with category
-	Categories []*Category `bun:"m2m:ppob.product_category_relations,join:Product=Category"`
+	Category *ProductCategory `bun:"rel:belongs-to,join:product_category_id=id"`
+
+	// many-to-many relationship with product type
+	ProductType *ProductType `bun:"rel:belongs-to,join:product_type_id=id"`
 }
