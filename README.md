@@ -1,4 +1,4 @@
-# Go Clean Architecture
+# Go Universe Architecture
 
 Clean Architecture with [Gin Web Framework](https://github.com/gin-gonic/gin)
 
@@ -207,7 +207,7 @@ Even if you are not able to make contributions via code, please don't hesitate t
 ### Authors
 
 <div align="center">
-    <a href="https://github.com/wesionaryTEAM/go_clean_architecture/graphs/contributors">
-        <img src="https://contrib.rocks/image?repo=wesionaryTEAM/go_clean_architecture" />
+    <a href="https://github.com/1layar/universe/graphs/contributors">
+        <img src="https://contrib.rocks/image?repo=1layar/universe" />
     </a>
 </div>
