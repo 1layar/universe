@@ -1,0 +1,1 @@
+-- Migration down script for alter_product_add_comission_and_fee

@@ -61,6 +61,21 @@ func Command() *cli.Command {
 				},
 			},
 			{
+				Name:  "bill-check",
+				Usage: "get iak price list on postpaid",
+				Action: func(c *cli.Context) error {
+					log.Info("get iak price list on postpaid...")
+					priceList, err := iakService.BillList()
+
+					if err != nil {
+						log.Error("failed to get iak price list")
+						return cli.Exit(err, 1)
+					}
+
+					return cli.Exit(priceList, 0)
+				},
+			},
+			{
 				Name:  "import-product",
 				Usage: "sync iak product with own product list",
 				Action: func(c *cli.Context) error {
@@ -72,7 +87,14 @@ func Command() *cli.Command {
 						return cli.Exit(err, 1)
 					}
 
-					err = productService.ImportIak(c.Context, priceList.Data.PriceList)
+					pasca, err := iakService.BillList()
+
+					if err != nil {
+						log.Error("failed to get iak bill list")
+						return cli.Exit(err, 1)
+					}
+
+					err = productService.ImportIak(c.Context, priceList.Data.PriceList, pasca)
 
 					if err != nil {
 						log.Error("failed to import iak price list")

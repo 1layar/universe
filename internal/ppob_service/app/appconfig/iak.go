@@ -135,3 +135,21 @@ const (
 	SERVER_CODE_142 ServerListCode = "142" //Dragon Nest
 	SERVER_CODE_172 ServerListCode = "172" //Genshin Impact
 )
+
+type IakPostpaidType string
+
+const (
+	ASURANSI        IakPostpaidType = "asuransi"
+	BPJS            IakPostpaidType = "bpjs"
+	EMONEY          IakPostpaidType = "emoney"
+	FINANCE         IakPostpaidType = "finance"
+	GAS             IakPostpaidType = "gas"
+	HP              IakPostpaidType = "hp"
+	INTERNET        IakPostpaidType = "internet"
+	PAJAK_DAERAH    IakPostpaidType = "pajak-daerah"
+	PAJAK_KENDARAAN IakPostpaidType = "pajak-kendaraan"
+	PBB             IakPostpaidType = "pbb"
+	PDAM            IakPostpaidType = "pdam"
+	PLN             IakPostpaidType = "pln"
+	TV              IakPostpaidType = "tv"
+)

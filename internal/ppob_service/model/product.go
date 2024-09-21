@@ -38,6 +38,8 @@ type Product struct {
 	BillingCycle *int          `bun:"billing_cycle"`
 	DueDate      *time.Time    `bun:"due_date"`
 	GracePeriod  *int          `bun:"grace_period"`
+	Comission    float64       `bun:"comission"`
+	Fee          float64       `bun:"fee"`
 	// many-to-many relationship with category
 	Category *ProductCategory `bun:"rel:belongs-to,join:product_category_id=id"`
 

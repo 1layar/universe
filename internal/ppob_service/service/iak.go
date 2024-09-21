@@ -163,6 +163,32 @@ type CheckStatusResponse struct {
 	DataResponse[CheckStatusData]
 }
 
+type IakBillListResponse struct {
+	Data Data          `json:"data"`
+	Meta []interface{} `json:"meta"`
+}
+
+type Data struct {
+	Pasca []Pasca `json:"pasca"`
+}
+
+type Pasca struct {
+	Code     string `json:"code"`
+	Name     string `json:"name"`
+	Status   int64  `json:"status"`
+	Fee      int64  `json:"fee"`
+	Komisi   int64  `json:"komisi"`
+	Type     string `json:"type"`
+	Category string `json:"category"`
+}
+
+type IakBillListRequest struct {
+	Username string `json:"username"`
+	Sign     string `json:"sign"`
+	Commands string `json:"commands"`
+	// Status   *string `json:"status,omitempty"`
+}
+
 func NewIakService(
 	cb *gobreaker.CircuitBreaker[[]byte],
 	config *appconfig.Config,
@@ -231,7 +257,35 @@ func (s *IakService) GetClient(additional string) *req.Client {
 		SetCommonHeader("sign", string(sign[:]))
 }
 
-func (s *IakService) SendIak(path string, body any, additional string) ([]byte, error) {
+func (s *IakService) SendIakPostpaid(path string, body any, additional string) ([]byte, error) {
+	return s.Cb.Execute(func() ([]byte, error) {
+		url := s.config.IakPostpaidUrl + path
+		client := req.C()
+		client.SetCommonHeader("Content-Type", "application/json")
+
+		resp, err := client.R().SetBody(body).Post(url)
+		if err != nil {
+			return nil, err
+		}
+
+		defer resp.Body.Close()
+		body, err := io.ReadAll(resp.Body)
+		if err != nil {
+			s.logger.Error(err.Error())
+			return nil, err
+		}
+
+		if !resp.IsSuccessState() {
+			// log the body
+			s.logger.Error(resp.String())
+			return nil, errors.New("failed to send iak request")
+		}
+
+		return body, nil
+	})
+}
+
+func (s *IakService) SendIakPrepaid(path string, body any, additional string) ([]byte, error) {
 	return s.Cb.Execute(func() ([]byte, error) {
 		url := s.config.IakPrepaidUrl + path
 		client := s.GetClient(additional)
@@ -260,7 +314,7 @@ func (s *IakService) SendIak(path string, body any, additional string) ([]byte, 
 
 /** API to get remaining balance in your IAK wallet. */
 func (s *IakService) GetBalance() (*CheckBalanceResponse, error) {
-	body, err := s.SendIak(
+	body, err := s.SendIakPrepaid(
 		"/api/check-balance",
 		CheckBalanceRequest{
 			SignedRequest: SignedRequest{
@@ -301,7 +355,7 @@ func (s *IakService) GetPriceList(
 	if options.ProductType != nil && options.Operator != nil {
 		_type := string(*options.ProductType)
 		operator := string(*options.Operator)
-		body, err = s.SendIak(
+		body, err = s.SendIakPrepaid(
 			fmt.Sprintf("/api/pricelist/%s/%s", _type, operator),
 			PriceListRequest{
 				SignedRequest: SignedRequest{
@@ -314,7 +368,7 @@ func (s *IakService) GetPriceList(
 		)
 	} else if options.ProductType != nil {
 		_type := string(*options.ProductType)
-		body, err = s.SendIak(
+		body, err = s.SendIakPrepaid(
 			fmt.Sprintf("/api/pricelist/%s", _type),
 			PriceListRequest{
 				SignedRequest: SignedRequest{
@@ -326,7 +380,7 @@ func (s *IakService) GetPriceList(
 			"pl",
 		)
 	} else {
-		body, err = s.SendIak(
+		body, err = s.SendIakPrepaid(
 			"/api/pricelist",
 			PriceListRequest{
 				SignedRequest: SignedRequest{
@@ -366,7 +420,7 @@ func (s *IakService) CheckOperatorPrefix(phone string) (*appconfig.IakOperatorPr
 
 // API to check whether PLN Prepaid Subscriber is valid or invalid.
 func (s *IakService) InquiryPLN(customerId string) (*InqueryPlnResponse, error) {
-	body, err := s.SendIak(
+	body, err := s.SendIakPrepaid(
 		"/api/inquiry-pln",
 		InqueryPlnRequest{
 			SignedRequest: SignedRequest{
@@ -393,7 +447,7 @@ func (s *IakService) InquiryPLN(customerId string) (*InqueryPlnResponse, error) 
 
 // API to top up prepaid products.
 func (s *IakService) TopUp(refId string, customerId string, productCode string) (*TopUpResponse, error) {
-	body, err := s.SendIak(
+	body, err := s.SendIakPrepaid(
 		"/api/topup",
 		TopUpRequest{
 			SignedRequest: SignedRequest{
@@ -424,7 +478,7 @@ func (s *IakService) TopUp(refId string, customerId string, productCode string) 
 // IAK will automatically detect the operator for each number in hp field that you send.
 // Change the pulsa_code field to one of the code we listed below to activate this feature.
 func (s *IakService) TopuPulsa(refId string, amount int64, hp string) (*TopUpResponse, error) {
-	body, err := s.SendIak(
+	body, err := s.SendIakPrepaid(
 		"/api/topup",
 		TopUpRequest{
 			SignedRequest: SignedRequest{
@@ -453,7 +507,7 @@ func (s *IakService) TopuPulsa(refId string, amount int64, hp string) (*TopUpRes
 
 // API to check game server list.
 func (s *IakService) InquiryGameServer(gameCode appconfig.ServerListCode) (*InqueryGameServerResponse, error) {
-	body, err := s.SendIak(
+	body, err := s.SendIakPrepaid(
 		"/api/inquiry-game-server",
 		InqueryGameServerRequest{
 			SignedRequest: SignedRequest{
@@ -495,7 +549,7 @@ func (s *IakService) GetGameFormat(gameCode appconfig.GameCode, info map[string]
 
 // API to check status prepaid transaction.
 func (s *IakService) CheckStatus(refId string) (*CheckStatusResponse, error) {
-	body, err := s.SendIak(
+	body, err := s.SendIakPrepaid(
 		"/api/check-status",
 		CheckStatusRequest{
 			SignedRequest: SignedRequest{
@@ -518,4 +572,28 @@ func (s *IakService) CheckStatus(refId string) (*CheckStatusResponse, error) {
 	}
 
 	return &data, nil
+}
+
+func (s *IakService) BillList(priceType ...appconfig.IakPostpaidType) ([]Pasca, error) {
+	body, err := s.SendIakPostpaid(
+		"/api/v1/bill/check",
+		map[string]interface{}{
+			"commands": "pricelist-pasca",
+			"username": s.config.IakUsername,
+			"sign":     s.GetSign("pl"),
+		},
+		"pl",
+	)
+
+	if err != nil {
+		return nil, err
+	}
+
+	// unmarshal response
+	var result IakBillListResponse
+	if err := json.Unmarshal(body, &result); err != nil {
+		return nil, err
+	}
+
+	return result.Data.Pasca, nil
 }
