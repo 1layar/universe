@@ -77,6 +77,14 @@ func (s *ProductService) ImportIak(ctx context.Context, product []IakProduct) er
 			continue
 		}
 
+		if p.ProductType == "" {
+			p.ProductType = "other"
+		}
+
+		if p.ProductCategory == "" {
+			p.ProductCategory = "other"
+		}
+
 		prodType, err := s.typeS.GetByField(ctx, "type_name", p.ProductType)
 		if err != nil && err != sql.ErrNoRows {
 			return err

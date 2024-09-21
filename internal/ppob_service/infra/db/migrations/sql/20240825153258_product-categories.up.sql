@@ -6,5 +6,5 @@ CREATE SCHEMA IF NOT EXISTS ppob;
 -- bun:split
 CREATE TABLE ppob.product_categories (
     id SERIAL PRIMARY KEY,
-    category_name VARCHAR(50) NOT NULL UNIQUE
+    category_name VARCHAR(225) NOT NULL UNIQUE
 );

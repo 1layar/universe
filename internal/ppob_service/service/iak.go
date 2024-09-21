@@ -183,6 +183,33 @@ func NewIakService(
 	}
 }
 
+type GetProductOption func(*ProductOption)
+
+type ProductOption struct {
+	ProductType *appconfig.IakProductType
+	Operator    *appconfig.IakProductOperator
+	Status      appconfig.IakProductStatus
+}
+
+func WithOperator(productType appconfig.IakProductType, operator appconfig.IakProductOperator) GetProductOption {
+	return func(option *ProductOption) {
+		option.Operator = &operator
+		option.ProductType = &productType
+	}
+}
+
+func WithStatus(status appconfig.IakProductStatus) GetProductOption {
+	return func(option *ProductOption) {
+		option.Status = status
+	}
+}
+
+func WithProductType(productType appconfig.IakProductType) GetProductOption {
+	return func(option *ProductOption) {
+		option.ProductType = &productType
+	}
+}
+
 /**
  * Get signature by formula: md5({username}+{api_key}+{additional})
  * @param additional key for each api call
@@ -258,18 +285,59 @@ func (s *IakService) GetBalance() (*CheckBalanceResponse, error) {
 }
 
 /** API to get pricelist of IAK prepaid products. */
-func (s *IakService) GetPriceList(_type appconfig.IakProductType, operator appconfig.IakProductOperator, status appconfig.IakProductStatus) (*ProductListResponse, error) {
-	body, err := s.SendIak(
-		fmt.Sprintf("/api/pricelist/%s/%s", _type, operator),
-		PriceListRequest{
-			SignedRequest: SignedRequest{
-				Username: s.config.IakUsername,
-				Sign:     s.GetSign("pl"),
+func (s *IakService) GetPriceList(
+	opts ...GetProductOption,
+) (*ProductListResponse, error) {
+	var body []byte
+	var err error
+	options := ProductOption{
+		Status: appconfig.All,
+	}
+
+	for _, opt := range opts {
+		opt(&options)
+	}
+
+	if options.ProductType != nil && options.Operator != nil {
+		_type := string(*options.ProductType)
+		operator := string(*options.Operator)
+		body, err = s.SendIak(
+			fmt.Sprintf("/api/pricelist/%s/%s", _type, operator),
+			PriceListRequest{
+				SignedRequest: SignedRequest{
+					Username: s.config.IakUsername,
+					Sign:     s.GetSign("pl"),
+				},
+				Status: options.Status,
 			},
-			Status: status,
-		},
-		"pl",
-	)
+			"pl",
+		)
+	} else if options.ProductType != nil {
+		_type := string(*options.ProductType)
+		body, err = s.SendIak(
+			fmt.Sprintf("/api/pricelist/%s", _type),
+			PriceListRequest{
+				SignedRequest: SignedRequest{
+					Username: s.config.IakUsername,
+					Sign:     s.GetSign("pl"),
+				},
+				Status: options.Status,
+			},
+			"pl",
+		)
+	} else {
+		body, err = s.SendIak(
+			"/api/pricelist",
+			PriceListRequest{
+				SignedRequest: SignedRequest{
+					Username: s.config.IakUsername,
+					Sign:     s.GetSign("pl"),
+				},
+				Status: options.Status,
+			},
+			"pl",
+		)
+	}
 
 	if err != nil {
 		return nil, err

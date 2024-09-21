@@ -5,8 +5,6 @@ go 1.23.0
 require (
 	github.com/ThreeDotsLabs/watermill v1.3.5
 	github.com/ThreeDotsLabs/watermill-amqp/v2 v2.1.1
-	github.com/goccy/go-json v0.10.2
-	github.com/gookit/goutil v0.6.15
 	github.com/imroc/req/v3 v3.43.7
 	github.com/joho/godotenv v1.5.1
 	github.com/kelseyhightower/envconfig v1.4.0

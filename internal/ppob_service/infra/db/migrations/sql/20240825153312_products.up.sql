@@ -9,7 +9,7 @@ CREATE TABLE ppob.products (
     kind VARCHAR(50) NOT NULL CHECK (kind IN ('prepaid', 'postpaid')),
     product_code VARCHAR(50) NOT NULL,
     product_description TEXT NOT NULL,
-    product_nominal VARCHAR(50) NOT NULL,
+    product_nominal VARCHAR(225) NOT NULL,
     product_details TEXT DEFAULT '-',
     product_price DECIMAL(10, 2) NOT NULL,
     product_type_id INTEGER NOT NULL REFERENCES ppob.product_types(id),
