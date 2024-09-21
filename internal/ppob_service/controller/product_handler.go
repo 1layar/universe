@@ -3,8 +3,8 @@ package controller
 import (
 	"context"
 
+	"github.com/1layar/universe/internal/ppob_service/model"
 	"github.com/1layar/universe/internal/ppob_service/service"
-	"github.com/1layar/universe/internal/product_catalog_service/model"
 	"github.com/1layar/universe/pkg/shared/command"
 	"github.com/1layar/universe/pkg/shared/constant"
 	"github.com/1layar/universe/pkg/shared/event"
@@ -14,7 +14,6 @@ import (
 	"github.com/ThreeDotsLabs/watermill/components/requestreply"
 	"github.com/ThreeDotsLabs/watermill/message"
 	"github.com/goccy/go-json"
-	"github.com/gookit/goutil/arrutil"
 	"go.uber.org/fx"
 )
 
@@ -92,18 +91,8 @@ func (h ProductHandler) HandleGetAllProduct(ctx context.Context, cmd *command.Ge
 	for i, product := range products {
 		productResults[i] = command.ProductResult{
 			ID:          product.ID,
-			Name:        product.Name,
-			SKU:         product.SKU,
+			SKU:         product.Code,
 			Description: product.Description,
-			PictureURL:  product.PictureURL,
-			Quantity:    product.Quantity,
-			Price:       product.Price,
-			Categories: arrutil.Map(product.Categories, func(input *model.Category) (target command.CategoryResult, find bool) {
-				return command.CategoryResult{
-					ID:   input.ID,
-					Name: input.Name,
-				}, true
-			}),
 		}
 	}
 
@@ -116,21 +105,9 @@ func (h ProductHandler) HandleGetAllProduct(ctx context.Context, cmd *command.Ge
 }
 
 func (h ProductHandler) HandleAddProduct(ctx context.Context, cmd *command.AddProductCommand) (command.AddProductResult, error) {
-	categories := []*model.Category{}
-
-	for _, categoryID := range cmd.Categories {
-		categories = append(categories, &model.Category{
-			ID: categoryID,
-		})
-	}
 	product := &model.Product{
-		Name:        cmd.Name,
-		SKU:         cmd.SKU,
+		Code:        cmd.SKU,
 		Description: cmd.Description,
-		PictureURL:  cmd.PictureURL,
-		Quantity:    cmd.Quantity,
-		Price:       cmd.Price,
-		Categories:  categories,
 	}
 
 	productID, err := h.ProductService.Create(ctx, product)
@@ -162,21 +139,9 @@ func (h ProductHandler) HandleAddProduct(ctx context.Context, cmd *command.AddPr
 }
 
 func (h ProductHandler) HandleAddUpdate(ctx context.Context, cmd *command.UpdateProductCommand) (command.UpdateProductResult, error) {
-	categories := []*model.Category{}
-
-	for _, categoryID := range cmd.Categories {
-		categories = append(categories, &model.Category{
-			ID: categoryID,
-		})
-	}
 	product := &model.Product{
-		Name:        cmd.Name,
-		SKU:         cmd.SKU,
+		Code:        cmd.SKU,
 		Description: cmd.Description,
-		PictureURL:  cmd.PictureURL,
-		Quantity:    cmd.Quantity,
-		Price:       cmd.Price,
-		Categories:  categories,
 	}
 
 	err := h.ProductService.Update(ctx, product)

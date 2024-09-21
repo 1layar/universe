@@ -12,7 +12,8 @@ import (
 type iakCommandDeps struct {
 	fx.In
 
-	IakService *service.IakService
+	IakService     *service.IakService
+	ProductService *service.ProductService
 }
 
 func Command() *cli.Command {
@@ -24,6 +25,7 @@ func Command() *cli.Command {
 	log.Info("init iak service...")
 
 	iakService := deps.IakService
+	productService := deps.ProductService
 
 	return &cli.Command{
 		Name:  "iak",
@@ -61,6 +63,32 @@ func Command() *cli.Command {
 					}
 
 					return cli.Exit(priceList, 0)
+				},
+			},
+			{
+				Name:  "import-product",
+				Usage: "sync iak product with own product list",
+				Action: func(c *cli.Context) error {
+					log.Info("import iak price list...")
+					priceList, err := iakService.GetPriceList(
+						appconfig.Pulsa,
+						appconfig.PulsaAxis,
+						appconfig.All,
+					)
+
+					if err != nil {
+						log.Error("failed to get iak price list")
+						return cli.Exit(err, 1)
+					}
+
+					err = productService.ImportIak(c.Context, priceList.Data.PriceList)
+
+					if err != nil {
+						log.Error("failed to import iak price list")
+						return cli.Exit(err, 1)
+					}
+
+					return cli.Exit("Successed", 0)
 				},
 			},
 		},

@@ -1,14 +1,11 @@
 package model
 
-import (
-	"github.com/uptrace/bun"
-)
+import "github.com/uptrace/bun"
 
-type ProductCategoryRelation struct {
-	bun.BaseModel `bun:"table:ppob.product_category_relations"`
+type ProductCategory struct {
+	bun.BaseModel `bun:"table:ppob.product_categories,alias:c"`
 
-	ProductID  int       `bun:",pk"`
-	CategoryID int       `bun:",pk"`
-	Product    *Product  `bun:"rel:belongs-to,join:product_id=id"`
-	Category   *Category `bun:"rel:belongs-to,join:category_id=id"`
+	ID       int        `bun:"id,pk,autoincrement"`
+	Name     string     `bun:"category_name"`
+	Products []*Product `bun:"rel:has-many,join:id=product_category_id"`
 }
