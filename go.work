@@ -4,6 +4,7 @@ use (
 	./internal/account_service
 	./internal/api_gateway
 	./internal/auth_service
+	./internal/cart_service
 	./internal/cms_service
 	./internal/email_service
 	./internal/payment_service
