@@ -8,6 +8,7 @@ import (
 	"github.com/1layar/universe/internal/cart_service/repo"
 	"github.com/1layar/universe/internal/cart_service/server"
 	"github.com/1layar/universe/internal/cart_service/service"
+	"github.com/1layar/universe/internal/cart_service/store"
 	"github.com/1layar/universe/pkg/logger"
 	"go.uber.org/fx"
 )
@@ -30,6 +31,7 @@ func NewApp(ctx appcontext.Ctx, additionalOpts ...fx.Option) *fx.App {
 		infra.Module(),
 		repo.Module(),
 		service.Module(),
+		store.Module(),
 	}
 
 	if ctx.Env == appcontext.EnvServer {
