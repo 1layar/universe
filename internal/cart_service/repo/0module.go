@@ -6,8 +6,6 @@ import (
 
 func Module() fx.Option {
 	return fx.Module("repo", fx.Provide(
-		NewProductRepository,
-		NewProductCategoryRepository,
 		NewCartRepository,
 	))
 }

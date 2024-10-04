@@ -25,24 +25,6 @@ type ConfigSpec struct {
 
 	// RabbitMQ
 	AmqpUrl string `split_words:"true" required:"true" default:"amqp://guest:guest@localhost:5672/"`
-
-	// Iak Base Url
-	IakPrepaidUrl string `split_words:"true" required:"true"`
-
-	// Iak Username
-	IakUsername string `split_words:"true" required:"true"`
-
-	// Iak Api Key
-	IakApiKey string `split_words:"true" required:"true"`
-
-	// Ipaymu Base Url
-	IpaymuBaseUrl string `split_words:"true" required:"true"`
-
-	// IPaymu Va
-	IpaymuVa string `split_words:"true" required:"true"`
-
-	// Ipaymu Key
-	IpaymuKey string `split_words:"true" required:"true"`
 }
 
 type Config struct {

@@ -7,15 +7,15 @@ import (
 	"go.uber.org/fx"
 )
 
-type CategoryHandler struct {
+type CartHandler struct {
 	fx.In
-	ProductService   *service.ProductService
+	CartService      *service.CartService
 	CommandBus       *cqrs.CommandBus
 	Publisher        *amqp.Publisher
 	Subscriber       *amqp.Subscriber
 	CommandProcessor *cqrs.CommandProcessor
 }
 
-func (h CategoryHandler) GetHandlerName(name string) string {
-	return "product_catalog_service.product." + name
+func (h CartHandler) GetHandlerName(name string) string {
+	return "cart." + name
 }

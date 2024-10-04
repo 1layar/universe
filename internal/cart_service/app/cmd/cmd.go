@@ -3,8 +3,6 @@ package app
 import (
 	"os"
 
-	"github.com/1layar/universe/internal/cart_service/app/cmd/cli/db"
-	"github.com/1layar/universe/internal/cart_service/app/cmd/cli/ipaymu"
 	"github.com/1layar/universe/internal/cart_service/app/cmd/server"
 
 	"github.com/rs/zerolog/log"
@@ -17,8 +15,6 @@ func Run(name string, version string) {
 		Version: version,
 		Commands: []*cli.Command{
 			server.Command(),
-			db.Command(),
-			ipaymu.Command(),
 		},
 	}
 	if err := app.Run(os.Args); err != nil {
