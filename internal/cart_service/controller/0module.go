@@ -5,5 +5,10 @@ import (
 )
 
 func Module() fx.Option {
-	return fx.Module("controller")
+	return fx.Module("controller",
+		fx.Invoke(ReqAddItem),
+		fx.Invoke(ReqEmpty),
+		fx.Invoke(ReqRemoveItem),
+		fx.Invoke(ReqGetCart),
+	)
 }

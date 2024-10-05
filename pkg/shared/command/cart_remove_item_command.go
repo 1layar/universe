@@ -1,14 +1,14 @@
 package command
 
 type (
-	CartAddItemCommand struct {
+	CartRemoveItemCommand struct {
 		SessionID string
 		ProductID int
 		Quantity  int
 		Source    string
 	}
 
-	CartAddItemCommandResult struct {
+	CartRemoveItemCommandResult struct {
 		SessionID string
 		Success   bool
 	}
