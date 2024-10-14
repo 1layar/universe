@@ -1,0 +1,28 @@
+name: Issue Remove Inactive
+
+on:
+  issues:
+    types: [edited]
+  issue_comment:
+    types: [created, edited]
+
+env:
+  TZ: Asia/Makassar
+
+permissions:
+  contents: read
+
+jobs:
+  issue-remove-inactive:
+    permissions:
+      issues: write  # for actions-cool/issues-helper to update issues
+     # pull-requests: write # for actions-cool/issues-helper to update PRs
+    runs-on: ubuntu-latest
+    steps:
+      - name: remove inactive
+        if: github.event.issue.state == 'open'
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'remove-labels'
+          issue-number: ${{ github.event.issue.number }}
+          labels: 'inactive'

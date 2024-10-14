@@ -1,0 +1,109 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- ./base
+- configmap.yaml
+
+patchesStrategicMerge:
+  - overlays/production/deployment-patch.yaml
+
+namePrefix: universe-
+
+namespace: default
+
+images:
+  - name: api_gateway
+    newName: ghcr.io/1layar/universe:api_gateway
+    newTag: v1.0.0
+  - name: account_service
+    newName: ghcr.io/1layar/universe:account_service
+    newTag: v1.0.0
+  - name: auth_service
+    newName: ghcr.io/1layar/universe:auth_service
+    newTag: v1.0.0
+  - name: cart_service
+    newName: ghcr.io/1layar/universe:cart_service
+    newTag: v1.0.0
+  - name: checkout_service
+    newName: ghcr.io/1layar/universe:checkout_service
+    newTag: v1.0.0
+  - name: cms_service
+    newName: ghcr.io/1layar/universe:cms_service
+    newTag: v1.0.0
+  - name: email_service
+    newName: ghcr.io/1layar/universe:email_service
+    newTag: v1.0.0
+  - name: payment_service
+    newName: ghcr.io/1layar/universe:payment_service
+    newTag: v1.0.0
+  - name: ppob_service
+    newName: ghcr.io/1layar/universe:ppob_service
+    newTag: v1.0.0
+  - name: product_catalog_service
+    newName: ghcr.io/1layar/universe:product_catalog_service
+    newTag: v1.0.0
+
+buildMetadata: [originAnnotations]
+
+# build:
+#   - name: api_gateway
+#     context: .
+#     dockerfile: Dockerfile
+#     tags:
+#       - latest
+#       - v1.0.0
+#   - name: account_service
+#     context: .
+#     dockerfile: Dockerfile
+#     tags:
+#       - latest
+#       - v1.0.0
+#   - name: auth_service
+#     context: .
+#     dockerfile: Dockerfile
+#     tags:
+#       - latest
+#       - v1.0.0
+#   - name: cart_service
+#     context: .
+#     dockerfile: Dockerfile
+#     tags:
+#       - latest
+#       - v1.0.0
+#   - name: checkout_service
+#     context: .
+#     dockerfile: Dockerfile
+#     tags:
+#       - latest
+#       - v1.0.0
+#   - name: cms_service
+#     context: .
+#     dockerfile: Dockerfile
+#     tags:
+#       - latest
+#       - v1.0.0
+#   - name: email_service
+#     context: .
+#     dockerfile: Dockerfile
+#     tags:
+#       - latest
+#       - v1.0.0
+#   - name: payment_service
+#     context: .
+#     dockerfile: Dockerfile
+#     tags:
+#       - latest
+#       - v1.0.0
+#   - name: ppob_service
+#     context: .
+#     dockerfile: Dockerfile
+#     tags:
+#       - latest
+#       - v1.0.0
+#   - name: product_catalog_service
+#     context: .
+#     dockerfile: Dockerfile
+#     tags:
+#       - latest
+#       - v1.0.0

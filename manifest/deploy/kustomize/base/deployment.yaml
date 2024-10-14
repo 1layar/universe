@@ -18,4 +18,15 @@ spec:
         - name : main
           image: template-single
           imagePullPolicy: Always
-
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
+          envFrom:
+          - configMapRef:
+              name: universe-config

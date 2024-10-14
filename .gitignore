@@ -3,3 +3,5 @@
 /postgres_data
 /rabbitmq_data
 __debug*
+# Ignore all .properties files
+*.properties

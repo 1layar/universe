@@ -1,0 +1,27 @@
+name: Issue Remove Need More Details
+
+on:
+  issues:
+    types: [edited]
+  issue_comment:
+    types: [created, edited]
+
+env: 
+  TZ: Asia/Makassar
+
+permissions:
+  contents: read
+
+jobs:
+  issue-remove-need-more-details:
+    permissions:
+      issues: write 
+    runs-on: ubuntu-latest
+    steps:
+      - name: remove need more details
+        if: github.event.issue.state == 'open' && github.actor == github.event.issue.user.login
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'remove-labels'
+          issue-number: ${{ github.event.issue.number }}
+          labels: 'need more details'

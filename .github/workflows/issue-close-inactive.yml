@@ -1,0 +1,22 @@
+name: Issue Close Inactive
+
+on:
+  schedule:
+    - cron: "0 20 * * *"
+
+env: 
+  TZ: Asia/Makassar 
+
+jobs:
+  close-issues:
+    runs-on: ubuntu-latest
+    steps:
+      - name: need close
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: "close-issues"
+#          token: ${{ secrets.GF_TOKEN }}
+          labels: 'inactive'
+          inactive-day: 30
+          exclude-labels: 'bug,$exclude-empty'
+          close-reason: 'not active'
