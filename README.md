@@ -4,10 +4,10 @@ Clean Architecture with [Gin Web Framework](https://github.com/gin-gonic/gin)
 
 ## Features :star:
 
--   Clean Architecture written in Go
--   Application backbone with [Gin Web Framework](https://github.com/gin-gonic/gin)
--   Dependency injection using [uber-go/fx](https://pkg.go.dev/go.uber.org/fx)
--   Uses fully featured [GORM](https://gorm.io/index.html)
+- Clean Architecture written in Go
+- Application backbone with [Gin Web Framework](https://github.com/gin-gonic/gin)
+- Dependency injection using [uber-go/fx](https://pkg.go.dev/go.uber.org/fx)
+- Uses fully featured [BUN](https://bun.uptrace.dev/)
 
 ## Linter setup
 
@@ -21,27 +21,27 @@ make lint-setup
 
 ## Run application
 
--   Setup environment variables
+- Setup environment variables
 
 ```zsh
 cp .env.example .env
 ```
 
--   Update your database credentials environment variables in `.env` file
+- Update your database credentials environment variables in `.env` file
 - Setup `serviceAccountKey.json`. To get one create a firebase project. Go to Settings > Service Accounts and then click **"Generate New Private Key"**. and then confirm by clicking **"Generate Key"**.
-Copy the key to `serviceAccountKey.json` file. You can see the example at `serviceAccountKey.json.example` file. 
+Copy the key to `serviceAccountKey.json` file. You can see the example at `serviceAccountKey.json.example` file.
 - Setup `STORAGE_BUCKET_NAME` in `.env`. In firebase Go to All products > Storage and then create new storage. `STORAGE_BUCKET_NAME` is visible at top in files tab as `gs://my-app.appspot.com`.Here `my-app.appspot.com` is your bucket name that needs to be in `.env` file.
 
 ### Locally
 
--   Run `go run main.go app:serve` to start the server.
--   There are other commands available as well. You can run `go run main.go -help` to know about other commands available.
+- Run `go run main.go app:serve` to start the server.
+- There are other commands available as well. You can run `go run main.go -help` to know about other commands available.
 
 ### Using `Docker`
 
 > Ensure Docker is already installed in the machine.
 
--   Start server using command `docker-compose up -d` or `sudo docker-compose up -d` if there are permission issues.
+- Start server using command `docker-compose up -d` or `sudo docker-compose up -d` if there are permission issues.
 
 ---
 
@@ -105,7 +105,7 @@ Add argument `p=host` after `make` command to run migration commands on local en
 <b>Example:</b>
 
 ```zsh
-make p=host migrate-up
+make db run:migrate
 ```
 
 <details>
@@ -113,11 +113,9 @@ make p=host migrate-up
 
 | Command               | Desc                                                       |
 | --------------------- | ---------------------------------------------------------- |
-| `make migrate-status` | Show migration status                                      |
-| `make migrate-up`     | Migrates the database to the most recent version available |
-| `make migrate-down`   | Undo a database migration                                  |
-| `make redo`           | Reapply the last migration                                 |
-| `make create`         | Create new migration file                                  |
+| `make db create:migrate` | Create migration file                                    |
+| `make db run:migrate`     | Migrates the database to the most recent version available |
+| `make db run:rollback`   | Undo a database migration                                  |
 
 </details>
 
@@ -144,17 +142,19 @@ go tool cover -html=cover.txt -o index.html
 
 <details>
     <summary><b>Steps to Update Dependencies</b></summary>
-    
+
 1. `go get -u`
 2. Remove all the dependencies packages that has `// indirect` from the modules
 3. `go mod tidy`
+
 </details>
 
 <details>
     <summary><b>Discovering available updates</b></summary>
-    
+
 List all of the modules that are dependencies of your current module, along with the latest version available for each:
-```zsh 
+
+```zsh
 go list -m -u all
 ```
 
@@ -175,7 +175,7 @@ cloud.google.com/go/firestore v1.2.0 [v1.6.1]
 
 <details>
     <summary><b>Getting a specific dependency version</b></summary>
-    
+
 To get a specific numbered version, append the module path with an `@` sign followed by the `version` you want:
 
 ```zsh
@@ -192,10 +192,11 @@ go get example.com/theirmodule@latest
 
 <details>
     <summary><b>Synchronizing your code’s dependencies</b></summary>
- 
+
 ```zsh
 go mod tidy
 ```
+
 </details>
 
 ### Contribute 👩‍💻🧑‍💻
