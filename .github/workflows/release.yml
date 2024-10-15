@@ -23,12 +23,17 @@ jobs:
     steps:
       - name: Checkout Github Code
         uses: actions/checkout@v4
-      - name: Get the version
-        id: get_version
+        with:
+          fetch-depth: 0
+      - name: Get nearest tag
+        id: get_tag
         run: |
-          GITHUB_REF=${{ github.ref }}
-          TAG=${GITHUB_REF#refs/tags/}
-          echo "VERSION=$TAG" >> $GITHUB_ENV
+          git fetch --tags
+          TAG=$(git describe --tags --abbrev=0)
+          echo "TAG=$TAG" >> $GITHUB_ENV
+          COMMIT_HASH=$(git rev-parse --short HEAD)
+          echo "VERSION=${TAG}-${COMMIT_HASH}" >> $GITHUB_ENV
+          echo "${TAG}-${COMMIT_HASH}"
         shell: bash
       - name: Log in to the Container registry
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
