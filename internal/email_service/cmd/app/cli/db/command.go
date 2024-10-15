@@ -9,8 +9,8 @@ import (
 	"go.uber.org/fx"
 
 	cliapp "github.com/1layar/universe/internal/email_service/cmd/app/cli"
-	"github.com/1layar/universe/internal/email_service/internal/infra/db/fixture"
-	"github.com/1layar/universe/internal/email_service/internal/infra/db/migrations"
+	"github.com/1layar/universe/internal/email_service/infra/db/fixture"
+	"github.com/1layar/universe/internal/email_service/infra/db/migrations"
 )
 
 type dbCommandDeps struct {

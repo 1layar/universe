@@ -5,8 +5,8 @@ import (
 
 	"go.uber.org/fx"
 
-	"github.com/1layar/universe/internal/product_catalog_service/internal/app"
-	"github.com/1layar/universe/internal/product_catalog_service/internal/app/appcontext"
+	"github.com/1layar/universe/internal/product_catalog_service/app"
+	"github.com/1layar/universe/internal/product_catalog_service/app/appcontext"
 )
 
 func Start(module fx.Option) {
