@@ -9,7 +9,7 @@ import (
 	"go.uber.org/fx"
 
 	cliapp "github.com/1layar/universe/internal/account_service/cmd/app/cli"
-	"github.com/1layar/universe/internal/account_service/internal/infra/db/migrations"
+	"github.com/1layar/universe/internal/account_service/infra/db/migrations"
 	"github.com/rs/zerolog/log"
 )
 

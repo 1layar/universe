@@ -10,6 +10,7 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  COMMIT_HASH: ${{ github.sha }}
 
 jobs:
   build-and-deploy:
@@ -17,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service-name: [api_gateway]
+        service-name: [api_gateway, account_service]
         # service-name: [api_gateway, account_service, auth_service, cart_service, checkout_service, cms_service, email_service, payment_service, ppob_service, product_catalog_service]
 
     steps:
@@ -47,6 +48,7 @@ jobs:
            --build-arg TZ=${{ env.TZ }} \
            --build-arg VERSION=${{ env.VERSION }} \
            --build-arg SERVICE_NAME=${{ matrix.service-name }} .
+           --build-arg COMMIT_HASH=${{ env.COMMIT_HASH }}
       - name: Push Docker Image
         run: |
           docker push ghcr.io/1layar/universe/${{ matrix.service-name }}:${{ env.VERSION }}

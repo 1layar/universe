@@ -3,15 +3,15 @@ package app
 import (
 	"fmt"
 
-	"github.com/1layar/universe/internal/account_service/internal/app/appconfig"
-	"github.com/1layar/universe/internal/account_service/internal/app/appcontext"
-	"github.com/1layar/universe/internal/account_service/internal/controller"
-	"github.com/1layar/universe/internal/account_service/internal/infra"
-	"github.com/1layar/universe/internal/account_service/internal/repo"
-	"github.com/1layar/universe/internal/account_service/internal/server"
-	"github.com/1layar/universe/internal/account_service/internal/service"
-	"github.com/1layar/universe/internal/account_service/internal/x/logger"
-	"github.com/1layar/universe/internal/account_service/internal/x/logger/fxlogger"
+	"github.com/1layar/universe/internal/account_service/app/appconfig"
+	"github.com/1layar/universe/internal/account_service/app/appcontext"
+	"github.com/1layar/universe/internal/account_service/controller"
+	"github.com/1layar/universe/internal/account_service/infra"
+	"github.com/1layar/universe/internal/account_service/repo"
+	"github.com/1layar/universe/internal/account_service/server"
+	"github.com/1layar/universe/internal/account_service/service"
+	"github.com/1layar/universe/internal/account_service/x/logger"
+	"github.com/1layar/universe/internal/account_service/x/logger/fxlogger"
 	"go.uber.org/fx"
 )
 
