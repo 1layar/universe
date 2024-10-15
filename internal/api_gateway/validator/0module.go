@@ -1,7 +1,7 @@
 package validator
 
 import (
-	"github.com/1layar/universe/pkg/api_gateway/internal/validator/rule"
+	"github.com/1layar/universe/internal/api_gateway/validator/rule"
 	"go.uber.org/fx"
 )
 

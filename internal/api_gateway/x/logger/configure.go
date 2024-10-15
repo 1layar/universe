@@ -9,7 +9,7 @@ import (
 	"github.com/rs/zerolog/log"
 	"github.com/rs/zerolog/pkgerrors"
 
-	"github.com/1layar/universe/pkg/api_gateway/internal/app/appconfig"
+	"github.com/1layar/universe/internal/api_gateway/app/appconfig"
 )
 
 func Configure(conf *appconfig.Config) {

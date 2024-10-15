@@ -1,4 +1,4 @@
-name: GoFrame AutoCreating SubMod Tags
+name: Universe AutoCreating SubMod Tags
 
 on:
   push:

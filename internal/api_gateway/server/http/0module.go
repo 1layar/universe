@@ -3,7 +3,7 @@ package http
 import (
 	"go.uber.org/fx"
 
-	"github.com/1layar/universe/pkg/api_gateway/internal/server/http/route"
+	"github.com/1layar/universe/internal/api_gateway/server/http/route"
 )
 
 func Module() fx.Option {

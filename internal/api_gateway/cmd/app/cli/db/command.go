@@ -8,8 +8,8 @@ import (
 	"github.com/urfave/cli/v2"
 	"go.uber.org/fx"
 
-	cliapp "github.com/1layar/universe/pkg/api_gateway/cmd/app/cli"
-	"github.com/1layar/universe/pkg/api_gateway/internal/infra/db/migrations"
+	cliapp "github.com/1layar/universe/internal/api_gateway/cmd/app/cli"
+	"github.com/1layar/universe/internal/api_gateway/infra/db/migrations"
 )
 
 type dbCommandDeps struct {

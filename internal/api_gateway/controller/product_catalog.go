@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/1layar/universe/pkg/api_gateway/internal/app/appconfig"
-	"github.com/1layar/universe/pkg/api_gateway/internal/middleware"
+	"github.com/1layar/universe/internal/api_gateway/app/appconfig"
+	"github.com/1layar/universe/internal/api_gateway/middleware"
 	"github.com/1layar/universe/pkg/shared/command"
 	"github.com/1layar/universe/pkg/shared/constant"
 	"github.com/1layar/universe/pkg/shared/dto"

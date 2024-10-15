@@ -1,7 +1,7 @@
 package watermill
 
 import (
-	"github.com/1layar/universe/pkg/api_gateway/internal/app/appconfig"
+	"github.com/1layar/universe/internal/api_gateway/app/appconfig"
 	"github.com/ThreeDotsLabs/watermill"
 	"github.com/ThreeDotsLabs/watermill-amqp/v2/pkg/amqp"
 )

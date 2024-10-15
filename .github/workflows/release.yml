@@ -1,0 +1,47 @@
+name: Universe Auto Release CI/CD
+
+on:
+  push:
+    branches:
+      - main
+env:
+  TZ: Asia/Makassar
+  VERSION: ${{ github.ref_name }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-deploy:
+    name: Auto Build Docker Image
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service-name: [api_gateway]
+        # service-name: [api_gateway, account_service, auth_service, cart_service, checkout_service, cms_service, email_service, payment_service, ppob_service, product_catalog_service]
+
+    steps:
+      - name: Checkout Github Code
+        uses: actions/checkout@v4
+      - name: Get the version
+        id: get_version
+        run: |
+          GITHUB_REF=${{ github.ref }}
+          TAG=${GITHUB_REF#refs/tags/}
+          echo "VERSION=$TAG" >> $GITHUB_ENV
+        shell: bash
+      - name: Log in to the Container registry
+        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build Docker Image
+        run: |
+          docker build -t ghcr.io/1layar/universe/${{ matrix.service-name }}:${{ env.VERSION }} -f ./manifest/docker/Dockerfile \
+           --build-arg TZ=${{ env.TZ }} \
+           --build-arg VERSION=${{ env.VERSION }} \
+           --build-arg SERVICE_NAME=${{ matrix.service-name }} .
+      - name: Push Docker Image
+        run: |
+          docker push ghcr.io/1layar/universe/${{ matrix.service-name }}:${{ env.VERSION }}

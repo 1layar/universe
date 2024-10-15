@@ -1,7 +1,7 @@
 package appconfig
 
 import (
-	"github.com/1layar/universe/pkg/api_gateway/internal/app/appcontext"
+	"github.com/1layar/universe/internal/api_gateway/app/appcontext"
 )
 
 // ConfigSpec is the configuration specification.

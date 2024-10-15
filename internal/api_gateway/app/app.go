@@ -3,13 +3,13 @@ package app
 import (
 	"go.uber.org/fx"
 
-	"github.com/1layar/universe/pkg/api_gateway/internal/app/appconfig"
-	"github.com/1layar/universe/pkg/api_gateway/internal/app/appcontext"
-	"github.com/1layar/universe/pkg/api_gateway/internal/controller"
-	"github.com/1layar/universe/pkg/api_gateway/internal/server"
-	"github.com/1layar/universe/pkg/api_gateway/internal/validator"
-	"github.com/1layar/universe/pkg/api_gateway/internal/x/logger"
-	"github.com/1layar/universe/pkg/api_gateway/internal/x/logger/fxlogger"
+	"github.com/1layar/universe/internal/api_gateway/app/appconfig"
+	"github.com/1layar/universe/internal/api_gateway/app/appcontext"
+	"github.com/1layar/universe/internal/api_gateway/controller"
+	"github.com/1layar/universe/internal/api_gateway/server"
+	"github.com/1layar/universe/internal/api_gateway/validator"
+	"github.com/1layar/universe/internal/api_gateway/x/logger"
+	"github.com/1layar/universe/internal/api_gateway/x/logger/fxlogger"
 )
 
 func New(ctx appcontext.Ctx, additionalOpts ...fx.Option) *fx.App {

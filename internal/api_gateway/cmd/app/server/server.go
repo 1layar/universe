@@ -8,10 +8,10 @@ import (
 	"github.com/rs/zerolog/log"
 	"go.uber.org/fx"
 
-	"github.com/1layar/universe/pkg/api_gateway/docs"
-	"github.com/1layar/universe/pkg/api_gateway/internal/app"
-	"github.com/1layar/universe/pkg/api_gateway/internal/app/appconfig"
-	"github.com/1layar/universe/pkg/api_gateway/internal/app/appcontext"
+	"github.com/1layar/universe/internal/api_gateway/app"
+	"github.com/1layar/universe/internal/api_gateway/app/appconfig"
+	"github.com/1layar/universe/internal/api_gateway/app/appcontext"
+	"github.com/1layar/universe/internal/api_gateway/docs"
 )
 
 func Run() {

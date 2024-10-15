@@ -7,7 +7,7 @@ import (
 
 	"github.com/goccy/go-json"
 
-	"github.com/1layar/universe/pkg/api_gateway/internal/middleware"
+	"github.com/1layar/universe/internal/api_gateway/middleware"
 	"github.com/1layar/universe/pkg/shared/command"
 	"github.com/1layar/universe/pkg/shared/constant"
 	"github.com/1layar/universe/pkg/shared/dto"

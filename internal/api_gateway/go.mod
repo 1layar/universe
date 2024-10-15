@@ -1,4 +1,4 @@
-module github.com/1layar/universe/pkg/api_gateway
+module github.com/1layar/universe/internal/api_gateway
 
 go 1.22.0
 
