@@ -32,8 +32,8 @@ jobs:
           TAG=$(git describe --tags --abbrev=0)
           echo "TAG=$TAG" >> $GITHUB_ENV
           COMMIT_HASH=$(git rev-parse --short HEAD)
-          echo "VERSION=${TAG}-${COMMIT_HASH}" >> $GITHUB_ENV
-          echo "${TAG}-${COMMIT_HASH}"
+          echo "VERSION=${TAG}" >> $GITHUB_ENV
+          echo "COMMIT_HASH=${COMMIT_HASH}" >> $GITHUB_ENV
         shell: bash
       - name: Log in to the Container registry
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
