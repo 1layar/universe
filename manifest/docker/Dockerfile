@@ -7,8 +7,10 @@ ENV GOOS=linux
 ENV GOARCH=amd64
 
 # build-args
+ARG TZ
 ARG VERSION
 ARG SERVICE_NAME
+ARG COMMIT_HASH
 
 RUN apk --no-cache add bash git openssh
 

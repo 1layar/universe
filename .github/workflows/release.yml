@@ -47,8 +47,8 @@ jobs:
           docker build -t ghcr.io/1layar/universe/${{ matrix.service-name }}:${{ env.VERSION }} -f ./manifest/docker/Dockerfile \
            --build-arg TZ=${{ env.TZ }} \
            --build-arg VERSION=${{ env.VERSION }} \
+           --build-arg COMMIT_HASH=${{ env.COMMIT_HASH }} \
            --build-arg SERVICE_NAME=${{ matrix.service-name }} .
-           --build-arg COMMIT_HASH=${{ env.COMMIT_HASH }}
       - name: Push Docker Image
         run: |
           docker push ghcr.io/1layar/universe/${{ matrix.service-name }}:${{ env.VERSION }}
