@@ -1,7 +1,7 @@
 package appconfig
 
 import (
-	"github.com/1layar/universe/internal/auth_service/internal/app/appcontext"
+	"github.com/1layar/universe/internal/auth_service/app/appcontext"
 	_ "github.com/joho/godotenv/autoload"
 	"github.com/kelseyhightower/envconfig"
 )

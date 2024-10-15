@@ -3,7 +3,7 @@ package handler
 import (
 	"context"
 
-	"github.com/1layar/universe/internal/auth_service/internal/service"
+	"github.com/1layar/universe/internal/auth_service/service"
 	"github.com/1layar/universe/pkg/shared/command"
 	"github.com/1layar/universe/pkg/shared/dto"
 	"github.com/ThreeDotsLabs/watermill-amqp/v2/pkg/amqp"

@@ -9,7 +9,7 @@ import (
 	"go.uber.org/fx"
 
 	cliapp "github.com/1layar/universe/internal/auth_service/cmd/app/cli"
-	"github.com/1layar/universe/internal/auth_service/internal/infra/db/migrations"
+	"github.com/1layar/universe/internal/auth_service/infra/db/migrations"
 )
 
 type dbCommandDeps struct {

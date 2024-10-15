@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service-name: [api_gateway, account_service]
+        service-name: [api_gateway, account_service, auth_service]
         # service-name: [api_gateway, account_service, auth_service, cart_service, checkout_service, cms_service, email_service, payment_service, ppob_service, product_catalog_service]
 
     steps:

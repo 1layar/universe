@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/1layar/universe/internal/auth_service/internal/app/appconfig"
+	"github.com/1layar/universe/internal/auth_service/app/appconfig"
 	openfga "github.com/openfga/go-sdk"
 	"github.com/openfga/go-sdk/client"
 )
