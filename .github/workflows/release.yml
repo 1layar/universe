@@ -61,10 +61,7 @@ jobs:
       id: install-kubectl
       uses: azure/setup-kubectl@v3
       with:
-        version: 'v1.31.1'
-    - name: Print Kubectl version
-      run: kubectl version
-      shell: bash
+        version: 'v1.31.0'
     - name: Install Helm
       id: install-helm
       uses: azure/setup-helm@v3
@@ -96,7 +93,7 @@ jobs:
         chmod 600 ~/.kube/config
         cat ~/.kube/config | head -n 3
         echo "KUBECONFIG=~/.kube/config" >> $GITHUB_ENV
-    - name: Debug Info
+    - name: Debug Info Kubernetes
       run: |
         kubectl version
         kubectl get nodes
