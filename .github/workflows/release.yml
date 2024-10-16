@@ -89,7 +89,7 @@ jobs:
       run: |
         # decode base64
         mkdir -p ~/.kube
-        echo ${{ secrets.KUBE_CONFIG }} | base64 -d > ~/.kube/config
+        echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > ~/.kube/config
         chmod 600 ~/.kube/config
         cat ~/.kube/config | head -n 3
         echo "KUBECONFIG=~/.kube/config" >> $GITHUB_ENV
