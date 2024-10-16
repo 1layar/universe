@@ -1,0 +1,114 @@
+---
+# Source: openfga/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openfga
+  labels:
+    helm.sh/chart: openfga-0.2.13
+    app.kubernetes.io/name: openfga
+    app.kubernetes.io/instance: openfga
+    app.kubernetes.io/version: "v1.6.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: openfga
+      app.kubernetes.io/instance: openfga
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: /metrics
+        prometheus.io/port: "2112"
+      labels:
+        app.kubernetes.io/name: openfga
+        app.kubernetes.io/instance: openfga
+    spec:
+      serviceAccountName: openfga
+      securityContext:
+        {}
+      
+      containers:
+        - name: openfga
+          securityContext:
+            {}
+          image: "openfga/openfga:v1.6.0"
+          imagePullPolicy: Always
+          args: ["run"]
+          ports:
+            - name: grpc
+              containerPort: 8081
+
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+
+            - name: profiler
+              containerPort: 3001
+              protocol: TCP
+
+            - name: playground
+              containerPort: 3000
+              protocol: TCP
+            - name: metrics
+              containerPort: 2112
+              protocol: TCP
+
+          env:
+            - name: OPENFGA_DATASTORE_ENGINE
+              value: "postgres"
+            - name: OPENFGA_DATASTORE_URI
+              value: "postgres://postgres:V4a0dU7AJpirM@my-pgsql-cluster-rw.pg.svc.cluster.local:5432/universe_db?sslmode=disable"
+            - name: OPENFGA_GRPC_ADDR
+              value: "0.0.0.0:8081"
+            - name: OPENFGA_HTTP_ENABLED
+              value: "true"
+            - name: OPENFGA_HTTP_ADDR
+              value: "0.0.0.0:8080"
+            - name: OPENFGA_HTTP_CORS_ALLOWED_ORIGINS
+              value: "*"
+            - name: OPENFGA_HTTP_CORS_ALLOWED_HEADERS
+              value: "*"
+
+            - name: OPENFGA_PLAYGROUND_ENABLED
+              value: "true"
+            - name: OPENFGA_PLAYGROUND_PORT
+              value: "3000"
+            - name: OPENFGA_LOG_FORMAT
+              value: json
+            - name: OPENFGA_LOG_LEVEL
+              value: info
+            - name: OPENFGA_LOG_TIMESTAMP_FORMAT
+              value: Unix
+            - name: OPENFGA_REQUEST_DURATION_DATASTORE_QUERY_COUNT_BUCKETS
+              value: "50,200"
+            - name: OPENFGA_METRICS_ENABLED
+              value: "true"
+            - name: OPENFGA_METRICS_ADDR
+              value: "0.0.0.0:2112"
+          readinessProbe:
+            failureThreshold: 6
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+            exec:
+              command: ["grpc_health_probe", "-addr=0.0.0.0:8081"]
+          livenessProbe:
+            failureThreshold: 12
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+            grpc:
+              port: 8081
+
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 1Gi
+            requests:
+              cpu: 1000m
+              memory: 1Gi

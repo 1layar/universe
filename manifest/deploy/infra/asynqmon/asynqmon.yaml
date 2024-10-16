@@ -1,0 +1,54 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: asynqmon
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: asynqmon
+  template:
+    metadata:
+      labels:
+        app: asynqmon
+    spec:
+      containers:
+      - name: asynqmon
+        image: hibiken/asynqmon
+        ports:
+        - containerPort: 3000
+        env:
+        - name: PORT
+          value: "3000"
+        - name: REDIS_ADDR
+          valueFrom:
+            configMapKeyRef:
+              name: asynqmon-config
+              key: redis-addr
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: asynqmon
+spec:
+  selector:
+    app: asynqmon
+  ports:
+    - protocol: TCP
+      port: 3700
+      targetPort: 3000
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: asynqmon-config
+data:
+  redis-addr: "redis-cluster.default.svc.cluster.local:6379"

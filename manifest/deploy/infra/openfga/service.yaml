@@ -1,0 +1,35 @@
+---
+# Source: openfga/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: openfga
+  labels:
+    helm.sh/chart: openfga-0.2.13
+    app.kubernetes.io/name: openfga
+    app.kubernetes.io/instance: openfga
+    app.kubernetes.io/version: "v1.6.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - name: grpc
+      port: 8081
+      targetPort: grpc
+      protocol: TCP
+    - name: http 
+      port: 8080
+      targetPort: http
+      protocol: TCP
+    - name: playground
+      port: 3000
+      targetPort: playground
+      protocol: TCP
+    - name: metrics
+      port: 2112
+      targetPort: metrics
+      protocol: TCP
+
+  selector:
+    app.kubernetes.io/name: openfga
+    app.kubernetes.io/instance: openfga

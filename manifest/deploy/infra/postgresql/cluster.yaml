@@ -1,0 +1,63 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: pgsql-cluster
+  namespace: pg
+spec:
+  imageName: ghcr.io/cloudnative-pg/postgresql:15.1
+  instances: 1
+
+  superuserSecret:
+    name: pg-superuser
+  enableSuperuserAccess: true
+
+  startDelay: 30
+  stopDelay: 100
+  primaryUpdateStrategy: unsupervised
+
+  logLevel: debug
+
+  postgresql:
+    parameters:
+      max_connections: '200'
+      shared_buffers: '256MB'
+      effective_cache_size: '768MB'
+      maintenance_work_mem: '64MB'
+      checkpoint_completion_target: '0.9'
+      wal_buffers: '7864kB'
+      default_statistics_target: '100'
+      random_page_cost: '1.1'
+      effective_io_concurrency: '200'
+      work_mem: '655kB'
+      huge_pages: 'off'
+      min_wal_size: '1GB'
+      max_wal_size: '4GB'
+
+    pg_hba:
+    - host all all 10.240.0.0/16 scram-sha-256
+
+  bootstrap:
+    initdb:
+      database: universe_db
+      owner: app_user
+      secret:
+        name: pg-app-user
+      postInitApplicationSQL:
+        - create schema account
+        - create schema auth
+        - create schema cms
+        - create schema payment
+        - create schema ppob
+        - create schema email
+        - create schema product_catalog
+
+
+  storage:
+    pvcTemplate:
+      accessModes:
+        - ReadWriteOnce
+      volumeMode: Filesystem
+      resources:
+        requests:
+          storage: 10Gi
+      volumeName: pv-postgres

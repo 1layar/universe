@@ -5,3 +5,4 @@
 __debug*
 # Ignore all .properties files
 *.properties
+secret.*
