@@ -51,4 +51,4 @@ kind: ConfigMap
 metadata:
   name: asynqmon-config
 data:
-  redis-addr: "redis-cluster.default.svc.cluster.local:6379"
+  redis-addr: "redis.redis.svc.cluster.local:6379"

@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-redis-cluster-1
+  name: redis
   namespace: redis
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: redis
-      cluster: my-redis-cluster-1
+      cluster: redis
   template:
     metadata:
       labels:
         app: redis
-        cluster: my-redis-cluster-1
+        cluster: redis
     spec:
       containers:
       - name: redis
@@ -33,4 +33,4 @@ spec:
       volumes:
       - name: redis-data
         persistentVolumeClaim:
-          claimName: redis-data-my-redis-cluster-1
+          claimName: pvc-redis

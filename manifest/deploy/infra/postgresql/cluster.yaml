@@ -4,6 +4,7 @@ metadata:
   name: pgsql-cluster
   namespace: pg
 spec:
+  description: "universe pg cluster"
   imageName: ghcr.io/cloudnative-pg/postgresql:15.1
   instances: 1
 
@@ -34,7 +35,7 @@ spec:
       max_wal_size: '4GB'
 
     pg_hba:
-    - host all all 10.240.0.0/16 scram-sha-256
+    - host all all 15.243.0.0/16 scram-sha-256
 
   bootstrap:
     initdb:
@@ -55,9 +56,9 @@ spec:
   storage:
     pvcTemplate:
       accessModes:
-        - ReadWriteOnce
+        - ReadWriteMany
       volumeMode: Filesystem
       resources:
         requests:
-          storage: 10Gi
+          storage: 5Gi
       volumeName: pv-postgres

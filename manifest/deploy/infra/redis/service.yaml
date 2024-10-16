@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-redis-cluster-1
+  name: redis
   namespace: redis
 spec:
   selector:
     app: redis
-    cluster: my-redis-cluster-1
+    cluster: redis
   ports:
     - port: 6379
       targetPort: 6379

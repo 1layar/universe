@@ -1,0 +1,25 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: production-rabbitmqcluster
+spec:
+  replicas: 1
+  persistence:
+    storageClassName: rabbitmq
+    storage: 10Gi
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
+    limits:
+      cpu: 800m
+      memory: 1Gi
+  rabbitmq:
+          additionalConfig: |
+                  log.console.level = info
+                  channel_max = 1700
+                  default_user= guest 
+                  default_pass = guest
+                  default_user_tags.administrator = true
+  service:
+    type: LoadBalancer
