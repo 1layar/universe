@@ -91,14 +91,14 @@ jobs:
         mkdir -p ~/.kube
         echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > ~/.kube/config
         chmod 600 ~/.kube/config
-        cat ~/.kube/config | head -n 3
         echo "KUBECONFIG=~/.kube/config" >> $GITHUB_ENV
         kubectl version
     - name: Deploy Psql secret
       run: |
-        echo "loading from $KUBECONFIG"
-        cat ~/.kube/config | head -n 3
+        mkdir -p ~/.kube
+        echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > ~/.kube/config
         chmod 600 ~/.kube/config
+        echo "KUBECONFIG=~/.kube/config" >> $GITHUB_ENV
         kubectl version
         echo "${{ secrets.PSQL_SECRET }}" | base64 -d > psql-secret.yaml
         kubectl apply -f psql-secret.yaml
