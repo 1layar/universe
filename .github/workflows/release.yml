@@ -93,11 +93,7 @@ jobs:
         chmod 600 ~/.kube/config
         cat ~/.kube/config | head -n 3
         echo "KUBECONFIG=~/.kube/config" >> $GITHUB_ENV
-    - name: Debug Info Kubernetes
-      run: |
         kubectl version
-        kubectl get nodes
-      shell: bash
     - name: Deploy Psql secret
       run: |
         echo "loading from $KUBECONFIG"
