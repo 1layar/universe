@@ -102,5 +102,4 @@ jobs:
         kubectl version
         echo "${{ secrets.PSQL_SECRET }}" | base64 -d > psql-secret.yaml
         kubectl apply -f psql-secret.yaml
-      shell: bash
       
