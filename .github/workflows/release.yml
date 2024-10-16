@@ -61,7 +61,10 @@ jobs:
       id: install-kubectl
       uses: azure/setup-kubectl@v3
       with:
-        version: 'v1.31.0'
+        version: 'v1.31.1'
+    - name: Print Kubectl version
+      run: kubectl version
+      shell: bash
     - name: Install Helm
       id: install-helm
       uses: azure/setup-helm@v3
@@ -89,12 +92,21 @@ jobs:
       run: |
         # decode base64
         mkdir -p ~/.kube
-        echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > ~/.kube/config
+        echo ${{ secrets.KUBE_CONFIG }} | base64 -d > ~/.kube/config
         chmod 600 ~/.kube/config
+        cat ~/.kube/config | head -n 3
         echo "KUBECONFIG=~/.kube/config" >> $GITHUB_ENV
+    - name: Debug Info
+      run: |
+        kubectl version
+        kubectl cluster-info
+        kubectl get nodes
+      shell: bash
     - name: Deploy Psql secret
       run: |
+        echo "loading from $KUBECONFIG"
+        cat ~/.kube/config | head -n 3
         echo "${{ secrets.PSQL_SECRET }}" | base64 -d > psql-secret.yaml
-        kubectl apply -f psql-secret.yaml
+        kubectl apply -f psql-secret.yaml --validate=false
       shell: bash
       
