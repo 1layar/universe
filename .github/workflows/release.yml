@@ -94,6 +94,7 @@ jobs:
         echo "KUBECONFIG=~/.kube/config" >> $GITHUB_ENV
     - name: Deploy Psql secret
       run: |
-        echo "${{ secrets.PSQL_SECRET }}" | base64 -d | kubectl apply -f -
+        echo "${{ secrets.PSQL_SECRET }}" | base64 -d > psql-secret.yaml
+        kubectl apply -f psql-secret.yaml
       shell: bash
       
