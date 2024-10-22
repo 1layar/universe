@@ -7,6 +7,7 @@ import (
 	"github.com/1layar/universe/internal/ppob_service/app/appconfig"
 	"github.com/1layar/universe/internal/ppob_service/model"
 	"github.com/1layar/universe/internal/ppob_service/repo"
+	"github.com/1layar/universe/pkg/logger"
 	"github.com/1layar/universe/pkg/shared/repository"
 	"github.com/1layar/universe/pkg/shared/service"
 	"github.com/uptrace/bun"
@@ -96,12 +97,14 @@ func (s *ProductService) ImportIak(ctx context.Context, product []IakProduct, pa
 			err = s.typeS.Create(ctx, prodType)
 
 			if err != nil {
+				logger.GetLogger().Debugf("error creating product type: %v", err)
 				return err
 			}
 		}
 
 		category, err := s.categoryS.GetByField(ctx, "category_name", p.ProductCategory)
 		if err != nil && err != sql.ErrNoRows {
+			logger.GetLogger().Debugf("error creating product category: %v", err)
 			return err
 		} else if category == nil {
 			category = &model.ProductCategory{
@@ -129,6 +132,7 @@ func (s *ProductService) ImportIak(ctx context.Context, product []IakProduct, pa
 		})
 
 		if err != nil {
+			logger.GetLogger().Debugf("error creating product: %v", err)
 			return err
 		}
 	}
@@ -136,6 +140,7 @@ func (s *ProductService) ImportIak(ctx context.Context, product []IakProduct, pa
 	for _, p := range pasca {
 		_, err := s.Repo.GetByField(ctx, "product_code", p.Code)
 		if err != nil && err != sql.ErrNoRows {
+			logger.GetLogger().Debugf("error creating product: %v", err)
 			return err
 		} else if err == nil {
 			continue
@@ -151,6 +156,7 @@ func (s *ProductService) ImportIak(ctx context.Context, product []IakProduct, pa
 
 		prodType, err := s.typeS.GetByField(ctx, "type_name", p.Type)
 		if err != nil && err != sql.ErrNoRows {
+			logger.GetLogger().Debugf("error creating product type: %v", err)
 			return err
 		} else if prodType == nil {
 			prodType = &model.ProductType{
@@ -160,12 +166,14 @@ func (s *ProductService) ImportIak(ctx context.Context, product []IakProduct, pa
 			err = s.typeS.Create(ctx, prodType)
 
 			if err != nil {
+				logger.GetLogger().Debugf("error creating product type: %v", err)
 				return err
 			}
 		}
 
 		category, err := s.categoryS.GetByField(ctx, "category_name", p.Category)
 		if err != nil && err != sql.ErrNoRows {
+			logger.GetLogger().Debugf("error creating product category: %v", err)
 			return err
 		} else if category == nil {
 			category = &model.ProductCategory{
@@ -175,6 +183,7 @@ func (s *ProductService) ImportIak(ctx context.Context, product []IakProduct, pa
 			err = s.categoryS.Create(ctx, category)
 
 			if err != nil {
+				logger.GetLogger().Debugf("error creating product category: %v", err)
 				return err
 			}
 		}
@@ -194,6 +203,7 @@ func (s *ProductService) ImportIak(ctx context.Context, product []IakProduct, pa
 		})
 
 		if err != nil {
+			logger.GetLogger().Debugf("error creating product: %v", err)
 			return err
 		}
 	}

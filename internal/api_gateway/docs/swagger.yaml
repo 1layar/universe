@@ -1,11 +1,11 @@
 basePath: /
 definitions:
-  command.AddProductResult:
+  github_com_1layar_universe_pkg_shared_command.AddProductResult:
     properties:
       id:
         type: integer
     type: object
-  command.AddUserResult:
+  github_com_1layar_universe_pkg_shared_command.AddUserResult:
     properties:
       email:
         type: string
@@ -18,14 +18,14 @@ definitions:
       role:
         type: integer
     type: object
-  command.DeleteUserResult:
+  github_com_1layar_universe_pkg_shared_command.DeleteUserResult:
     properties:
       has_delete:
         type: boolean
       id:
         type: integer
     type: object
-  command.GetUserResult:
+  github_com_1layar_universe_pkg_shared_command.GetUserResult:
     properties:
       email:
         type: string
@@ -36,7 +36,7 @@ definitions:
       password:
         type: string
     type: object
-  command.LoginResult:
+  github_com_1layar_universe_pkg_shared_command.LoginResult:
     properties:
       access_token:
         type: string
@@ -49,7 +49,7 @@ definitions:
       refresh_token:
         type: string
     type: object
-  command.RegisterResult:
+  github_com_1layar_universe_pkg_shared_command.RegisterResult:
     properties:
       access_token:
         type: string
@@ -62,19 +62,19 @@ definitions:
       refresh_token:
         type: string
     type: object
-  command.SearchUserResult:
+  github_com_1layar_universe_pkg_shared_command.SearchUserResult:
     properties:
       users:
         items:
-          $ref: '#/definitions/command.AddUserResult'
+          $ref: '#/definitions/github_com_1layar_universe_pkg_shared_command.AddUserResult'
         type: array
     type: object
-  command.UpdateProductResult:
+  github_com_1layar_universe_pkg_shared_command.UpdateProductResult:
     properties:
       id:
         type: integer
     type: object
-  command.UpdateUserResult:
+  github_com_1layar_universe_pkg_shared_command.UpdateUserResult:
     properties:
       email:
         type: string
@@ -83,7 +83,7 @@ definitions:
       name:
         type: string
     type: object
-  dto.AddProductDTO:
+  github_com_1layar_universe_pkg_shared_dto.AddProductDTO:
     properties:
       category_ids:
         description: many-to-many relationship with category_id
@@ -112,7 +112,7 @@ definitions:
     - quantity
     - sku
     type: object
-  dto.AddUser:
+  github_com_1layar_universe_pkg_shared_dto.AddUser:
     properties:
       email:
         type: string
@@ -134,18 +134,18 @@ definitions:
     - role
     - username
     type: object
-  dto.CategoryDTO:
+  github_com_1layar_universe_pkg_shared_dto.CategoryDTO:
     properties:
       id:
         type: integer
       name:
         type: string
     type: object
-  dto.GetAllProductPaginateResDTO:
+  github_com_1layar_universe_pkg_shared_dto.GetAllPpobTypeResDTO:
     properties:
       data:
         items:
-          $ref: '#/definitions/dto.ProductDTO'
+          $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.PPobTypeDTO'
         type: array
       limit:
         type: integer
@@ -154,97 +154,119 @@ definitions:
       total:
         type: integer
     type: object
-  dto.GlobalHandlerResp-command_AddProductResult:
+  github_com_1layar_universe_pkg_shared_dto.GetAllProductPaginateResDTO:
     properties:
       data:
-        $ref: '#/definitions/command.AddProductResult'
+        items:
+          $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.ProductDTO'
+        type: array
+      limit:
+        type: integer
+      page:
+        type: integer
+      total:
+        type: integer
+    type: object
+  github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_AddProductResult:
+    properties:
+      data:
+        $ref: '#/definitions/github_com_1layar_universe_pkg_shared_command.AddProductResult'
       message:
         type: string
       success:
         type: boolean
     type: object
-  dto.GlobalHandlerResp-command_AddUserResult:
+  github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_AddUserResult:
     properties:
       data:
-        $ref: '#/definitions/command.AddUserResult'
+        $ref: '#/definitions/github_com_1layar_universe_pkg_shared_command.AddUserResult'
       message:
         type: string
       success:
         type: boolean
     type: object
-  dto.GlobalHandlerResp-command_DeleteUserResult:
+  github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_DeleteUserResult:
     properties:
       data:
-        $ref: '#/definitions/command.DeleteUserResult'
+        $ref: '#/definitions/github_com_1layar_universe_pkg_shared_command.DeleteUserResult'
       message:
         type: string
       success:
         type: boolean
     type: object
-  dto.GlobalHandlerResp-command_GetUserResult:
+  github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_GetUserResult:
     properties:
       data:
-        $ref: '#/definitions/command.GetUserResult'
+        $ref: '#/definitions/github_com_1layar_universe_pkg_shared_command.GetUserResult'
       message:
         type: string
       success:
         type: boolean
     type: object
-  dto.GlobalHandlerResp-command_LoginResult:
+  github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_LoginResult:
     properties:
       data:
-        $ref: '#/definitions/command.LoginResult'
+        $ref: '#/definitions/github_com_1layar_universe_pkg_shared_command.LoginResult'
       message:
         type: string
       success:
         type: boolean
     type: object
-  dto.GlobalHandlerResp-command_RegisterResult:
+  github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_RegisterResult:
     properties:
       data:
-        $ref: '#/definitions/command.RegisterResult'
+        $ref: '#/definitions/github_com_1layar_universe_pkg_shared_command.RegisterResult'
       message:
         type: string
       success:
         type: boolean
     type: object
-  dto.GlobalHandlerResp-command_SearchUserResult:
+  github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_SearchUserResult:
     properties:
       data:
-        $ref: '#/definitions/command.SearchUserResult'
+        $ref: '#/definitions/github_com_1layar_universe_pkg_shared_command.SearchUserResult'
       message:
         type: string
       success:
         type: boolean
     type: object
-  dto.GlobalHandlerResp-command_UpdateProductResult:
+  github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_UpdateProductResult:
     properties:
       data:
-        $ref: '#/definitions/command.UpdateProductResult'
+        $ref: '#/definitions/github_com_1layar_universe_pkg_shared_command.UpdateProductResult'
       message:
         type: string
       success:
         type: boolean
     type: object
-  dto.GlobalHandlerResp-command_UpdateUserResult:
+  github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_UpdateUserResult:
     properties:
       data:
-        $ref: '#/definitions/command.UpdateUserResult'
+        $ref: '#/definitions/github_com_1layar_universe_pkg_shared_command.UpdateUserResult'
       message:
         type: string
       success:
         type: boolean
     type: object
-  dto.GlobalHandlerResp-dto_GetAllProductPaginateResDTO:
+  github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_dto_GetAllPpobTypeResDTO:
     properties:
       data:
-        $ref: '#/definitions/dto.GetAllProductPaginateResDTO'
+        $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.GetAllPpobTypeResDTO'
       message:
         type: string
       success:
         type: boolean
     type: object
-  dto.LoginDTO:
+  ? github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_dto_GetAllProductPaginateResDTO
+  : properties:
+      data:
+        $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.GetAllProductPaginateResDTO'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  github_com_1layar_universe_pkg_shared_dto.LoginDTO:
     properties:
       email:
         type: string
@@ -255,11 +277,18 @@ definitions:
     - email
     - password
     type: object
-  dto.ProductDTO:
+  github_com_1layar_universe_pkg_shared_dto.PPobTypeDTO:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  github_com_1layar_universe_pkg_shared_dto.ProductDTO:
     properties:
       categories:
         items:
-          $ref: '#/definitions/dto.CategoryDTO'
+          $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.CategoryDTO'
         type: array
       description:
         type: string
@@ -276,7 +305,7 @@ definitions:
       sku:
         type: string
     type: object
-  dto.RegisterDTO:
+  github_com_1layar_universe_pkg_shared_dto.RegisterDTO:
     properties:
       email:
         type: string
@@ -292,7 +321,7 @@ definitions:
     - password
     - username
     type: object
-  dto.UpdateProductDTO:
+  github_com_1layar_universe_pkg_shared_dto.UpdateProductDTO:
     properties:
       category_ids:
         description: many-to-many relationship with category_id
@@ -321,7 +350,7 @@ definitions:
     - quantity
     - sku
     type: object
-  dto.UpdateUser:
+  github_com_1layar_universe_pkg_shared_dto.UpdateUser:
     properties:
       email:
         type: string
@@ -370,14 +399,14 @@ paths:
         name: request
         required: true
         schema:
-          $ref: '#/definitions/dto.LoginDTO'
+          $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.LoginDTO'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/dto.GlobalHandlerResp-command_LoginResult'
+            $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_LoginResult'
       summary: Login accounts
       tags:
       - auth
@@ -392,17 +421,125 @@ paths:
         name: request
         required: true
         schema:
-          $ref: '#/definitions/dto.RegisterDTO'
+          $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.RegisterDTO'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/dto.GlobalHandlerResp-command_RegisterResult'
+            $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_RegisterResult'
       summary: Register accounts
       tags:
       - auth
+  /api/v1/ppob/products:
+    get:
+      consumes:
+      - application/json
+      description: get all product with pagination
+      parameters:
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: categories
+        type: array
+      - in: query
+        name: description
+        type: string
+      - in: query
+        name: limit
+        type: integer
+      - in: query
+        name: name
+        type: string
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: price
+        type: string
+      - in: query
+        name: quantity
+        type: integer
+      - in: query
+        name: sku
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_dto_GetAllProductPaginateResDTO'
+      summary: Get All Product
+      tags:
+      - ppob
+  /api/v1/ppob/sync-iak:
+    get:
+      consumes:
+      - application/json
+      description: get all product with pagination
+      parameters:
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: categories
+        type: array
+      - in: query
+        name: description
+        type: string
+      - in: query
+        name: limit
+        type: integer
+      - in: query
+        name: name
+        type: string
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: price
+        type: string
+      - in: query
+        name: quantity
+        type: integer
+      - in: query
+        name: sku
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_dto_GetAllProductPaginateResDTO'
+      summary: Get All Product
+      tags:
+      - ppob
+  /api/v1/ppob/types:
+    get:
+      consumes:
+      - application/json
+      description: get all product with pagination
+      parameters:
+      - in: query
+        name: limit
+        type: integer
+      - in: query
+        name: page
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_dto_GetAllPpobTypeResDTO'
+      summary: Get All Product
+      tags:
+      - ppob
   /api/v1/products:
     get:
       consumes:
@@ -442,7 +579,7 @@ paths:
         "201":
           description: Created
           schema:
-            $ref: '#/definitions/dto.GlobalHandlerResp-dto_GetAllProductPaginateResDTO'
+            $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_dto_GetAllProductPaginateResDTO'
       security:
       - JWT: []
       summary: Get All Product
@@ -458,14 +595,14 @@ paths:
         name: request
         required: true
         schema:
-          $ref: '#/definitions/dto.AddProductDTO'
+          $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.AddProductDTO'
       produces:
       - application/json
       responses:
         "201":
           description: Created
           schema:
-            $ref: '#/definitions/dto.GlobalHandlerResp-command_AddProductResult'
+            $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_AddProductResult'
       security:
       - JWT: []
       summary: Create Product
@@ -487,14 +624,14 @@ paths:
         name: request
         required: true
         schema:
-          $ref: '#/definitions/dto.UpdateProductDTO'
+          $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.UpdateProductDTO'
       produces:
       - application/json
       responses:
         "201":
           description: Created
           schema:
-            $ref: '#/definitions/dto.GlobalHandlerResp-command_UpdateProductResult'
+            $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_UpdateProductResult'
       security:
       - JWT: []
       summary: Update Product
@@ -516,7 +653,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/dto.GlobalHandlerResp-command_SearchUserResult'
+            $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_SearchUserResult'
       security:
       - JWT: []
       summary: List accounts
@@ -532,14 +669,14 @@ paths:
         name: request
         required: true
         schema:
-          $ref: '#/definitions/dto.AddUser'
+          $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.AddUser'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/dto.GlobalHandlerResp-command_AddUserResult'
+            $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_AddUserResult'
       security:
       - JWT: []
       summary: Add accounts
@@ -562,7 +699,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/dto.GlobalHandlerResp-command_DeleteUserResult'
+            $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_DeleteUserResult'
       security:
       - JWT: []
       summary: Delete accounts
@@ -584,7 +721,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/dto.GlobalHandlerResp-command_GetUserResult'
+            $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_GetUserResult'
       security:
       - JWT: []
       summary: Get accounts
@@ -605,14 +742,14 @@ paths:
         name: request
         required: true
         schema:
-          $ref: '#/definitions/dto.UpdateUser'
+          $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.UpdateUser'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/dto.GlobalHandlerResp-command_UpdateUserResult'
+            $ref: '#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_UpdateUserResult'
       security:
       - JWT: []
       summary: Get accounts

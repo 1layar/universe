@@ -43,7 +43,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/dto.LoginDTO"
+                            "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.LoginDTO"
                         }
                     }
                 ],
@@ -51,7 +51,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/dto.GlobalHandlerResp-command_LoginResult"
+                            "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_LoginResult"
                         }
                     }
                 }
@@ -77,7 +77,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/dto.RegisterDTO"
+                            "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.RegisterDTO"
                         }
                     }
                 ],
@@ -85,7 +85,180 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/dto.GlobalHandlerResp-command_RegisterResult"
+                            "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_RegisterResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/ppob/products": {
+            "get": {
+                "description": "get all product with pagination",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ppob"
+                ],
+                "summary": "Get All Product",
+                "parameters": [
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "name": "categories",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "description",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "price",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "quantity",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "sku",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_dto_GetAllProductPaginateResDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/ppob/sync-iak": {
+            "get": {
+                "description": "get all product with pagination",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ppob"
+                ],
+                "summary": "Get All Product",
+                "parameters": [
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "name": "categories",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "description",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "price",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "quantity",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "sku",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_dto_GetAllProductPaginateResDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/ppob/types": {
+            "get": {
+                "description": "get all product with pagination",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ppob"
+                ],
+                "summary": "Get All Product",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_dto_GetAllPpobTypeResDTO"
                         }
                     }
                 }
@@ -159,7 +332,7 @@ const docTemplate = `{
                     "201": {
                         "description": "Created",
                         "schema": {
-                            "$ref": "#/definitions/dto.GlobalHandlerResp-dto_GetAllProductPaginateResDTO"
+                            "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_dto_GetAllProductPaginateResDTO"
                         }
                     }
                 }
@@ -188,7 +361,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/dto.AddProductDTO"
+                            "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.AddProductDTO"
                         }
                     }
                 ],
@@ -196,7 +369,7 @@ const docTemplate = `{
                     "201": {
                         "description": "Created",
                         "schema": {
-                            "$ref": "#/definitions/dto.GlobalHandlerResp-command_AddProductResult"
+                            "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_AddProductResult"
                         }
                     }
                 }
@@ -234,7 +407,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/dto.UpdateProductDTO"
+                            "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.UpdateProductDTO"
                         }
                     }
                 ],
@@ -242,7 +415,7 @@ const docTemplate = `{
                     "201": {
                         "description": "Created",
                         "schema": {
-                            "$ref": "#/definitions/dto.GlobalHandlerResp-command_UpdateProductResult"
+                            "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_UpdateProductResult"
                         }
                     }
                 }
@@ -278,7 +451,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/dto.GlobalHandlerResp-command_SearchUserResult"
+                            "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_SearchUserResult"
                         }
                     }
                 }
@@ -307,7 +480,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/dto.AddUser"
+                            "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.AddUser"
                         }
                     }
                 ],
@@ -315,7 +488,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/dto.GlobalHandlerResp-command_AddUserResult"
+                            "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_AddUserResult"
                         }
                     }
                 }
@@ -352,7 +525,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/dto.GlobalHandlerResp-command_GetUserResult"
+                            "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_GetUserResult"
                         }
                     }
                 }
@@ -388,7 +561,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/dto.UpdateUser"
+                            "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.UpdateUser"
                         }
                     }
                 ],
@@ -396,7 +569,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/dto.GlobalHandlerResp-command_UpdateUserResult"
+                            "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_UpdateUserResult"
                         }
                     }
                 }
@@ -431,7 +604,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/dto.GlobalHandlerResp-command_DeleteUserResult"
+                            "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_DeleteUserResult"
                         }
                     }
                 }
@@ -439,7 +612,7 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "command.AddProductResult": {
+        "github_com_1layar_universe_pkg_shared_command.AddProductResult": {
             "type": "object",
             "properties": {
                 "id": {
@@ -447,7 +620,7 @@ const docTemplate = `{
                 }
             }
         },
-        "command.AddUserResult": {
+        "github_com_1layar_universe_pkg_shared_command.AddUserResult": {
             "type": "object",
             "properties": {
                 "email": {
@@ -467,7 +640,7 @@ const docTemplate = `{
                 }
             }
         },
-        "command.DeleteUserResult": {
+        "github_com_1layar_universe_pkg_shared_command.DeleteUserResult": {
             "type": "object",
             "properties": {
                 "has_delete": {
@@ -478,7 +651,7 @@ const docTemplate = `{
                 }
             }
         },
-        "command.GetUserResult": {
+        "github_com_1layar_universe_pkg_shared_command.GetUserResult": {
             "type": "object",
             "properties": {
                 "email": {
@@ -495,7 +668,7 @@ const docTemplate = `{
                 }
             }
         },
-        "command.LoginResult": {
+        "github_com_1layar_universe_pkg_shared_command.LoginResult": {
             "type": "object",
             "properties": {
                 "access_token": {
@@ -515,7 +688,7 @@ const docTemplate = `{
                 }
             }
         },
-        "command.RegisterResult": {
+        "github_com_1layar_universe_pkg_shared_command.RegisterResult": {
             "type": "object",
             "properties": {
                 "access_token": {
@@ -535,18 +708,18 @@ const docTemplate = `{
                 }
             }
         },
-        "command.SearchUserResult": {
+        "github_com_1layar_universe_pkg_shared_command.SearchUserResult": {
             "type": "object",
             "properties": {
                 "users": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/command.AddUserResult"
+                        "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_command.AddUserResult"
                     }
                 }
             }
         },
-        "command.UpdateProductResult": {
+        "github_com_1layar_universe_pkg_shared_command.UpdateProductResult": {
             "type": "object",
             "properties": {
                 "id": {
@@ -554,7 +727,7 @@ const docTemplate = `{
                 }
             }
         },
-        "command.UpdateUserResult": {
+        "github_com_1layar_universe_pkg_shared_command.UpdateUserResult": {
             "type": "object",
             "properties": {
                 "email": {
@@ -568,7 +741,7 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.AddProductDTO": {
+        "github_com_1layar_universe_pkg_shared_dto.AddProductDTO": {
             "type": "object",
             "required": [
                 "category_ids",
@@ -608,7 +781,7 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.AddUser": {
+        "github_com_1layar_universe_pkg_shared_dto.AddUser": {
             "type": "object",
             "required": [
                 "email",
@@ -638,7 +811,7 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.CategoryDTO": {
+        "github_com_1layar_universe_pkg_shared_dto.CategoryDTO": {
             "type": "object",
             "properties": {
                 "id": {
@@ -649,13 +822,13 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.GetAllProductPaginateResDTO": {
+        "github_com_1layar_universe_pkg_shared_dto.GetAllPpobTypeResDTO": {
             "type": "object",
             "properties": {
                 "data": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/dto.ProductDTO"
+                        "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.PPobTypeDTO"
                     }
                 },
                 "limit": {
@@ -669,11 +842,31 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.GlobalHandlerResp-command_AddProductResult": {
+        "github_com_1layar_universe_pkg_shared_dto.GetAllProductPaginateResDTO": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/command.AddProductResult"
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.ProductDTO"
+                    }
+                },
+                "limit": {
+                    "type": "integer"
+                },
+                "page": {
+                    "type": "integer"
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_AddProductResult": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_command.AddProductResult"
                 },
                 "message": {
                     "type": "string"
@@ -683,11 +876,11 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.GlobalHandlerResp-command_AddUserResult": {
+        "github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_AddUserResult": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/command.AddUserResult"
+                    "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_command.AddUserResult"
                 },
                 "message": {
                     "type": "string"
@@ -697,11 +890,11 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.GlobalHandlerResp-command_DeleteUserResult": {
+        "github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_DeleteUserResult": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/command.DeleteUserResult"
+                    "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_command.DeleteUserResult"
                 },
                 "message": {
                     "type": "string"
@@ -711,11 +904,11 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.GlobalHandlerResp-command_GetUserResult": {
+        "github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_GetUserResult": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/command.GetUserResult"
+                    "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_command.GetUserResult"
                 },
                 "message": {
                     "type": "string"
@@ -725,11 +918,11 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.GlobalHandlerResp-command_LoginResult": {
+        "github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_LoginResult": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/command.LoginResult"
+                    "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_command.LoginResult"
                 },
                 "message": {
                     "type": "string"
@@ -739,11 +932,11 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.GlobalHandlerResp-command_RegisterResult": {
+        "github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_RegisterResult": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/command.RegisterResult"
+                    "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_command.RegisterResult"
                 },
                 "message": {
                     "type": "string"
@@ -753,11 +946,11 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.GlobalHandlerResp-command_SearchUserResult": {
+        "github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_SearchUserResult": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/command.SearchUserResult"
+                    "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_command.SearchUserResult"
                 },
                 "message": {
                     "type": "string"
@@ -767,11 +960,11 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.GlobalHandlerResp-command_UpdateProductResult": {
+        "github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_UpdateProductResult": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/command.UpdateProductResult"
+                    "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_command.UpdateProductResult"
                 },
                 "message": {
                     "type": "string"
@@ -781,11 +974,11 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.GlobalHandlerResp-command_UpdateUserResult": {
+        "github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_command_UpdateUserResult": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/command.UpdateUserResult"
+                    "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_command.UpdateUserResult"
                 },
                 "message": {
                     "type": "string"
@@ -795,11 +988,11 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.GlobalHandlerResp-dto_GetAllProductPaginateResDTO": {
+        "github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_dto_GetAllPpobTypeResDTO": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/dto.GetAllProductPaginateResDTO"
+                    "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.GetAllPpobTypeResDTO"
                 },
                 "message": {
                     "type": "string"
@@ -809,7 +1002,21 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.LoginDTO": {
+        "github_com_1layar_universe_pkg_shared_dto.GlobalHandlerResp-github_com_1layar_universe_pkg_shared_dto_GetAllProductPaginateResDTO": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.GetAllProductPaginateResDTO"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "github_com_1layar_universe_pkg_shared_dto.LoginDTO": {
             "type": "object",
             "required": [
                 "email",
@@ -825,13 +1032,24 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.ProductDTO": {
+        "github_com_1layar_universe_pkg_shared_dto.PPobTypeDTO": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "github_com_1layar_universe_pkg_shared_dto.ProductDTO": {
             "type": "object",
             "properties": {
                 "categories": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/dto.CategoryDTO"
+                        "$ref": "#/definitions/github_com_1layar_universe_pkg_shared_dto.CategoryDTO"
                     }
                 },
                 "description": {
@@ -857,7 +1075,7 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.RegisterDTO": {
+        "github_com_1layar_universe_pkg_shared_dto.RegisterDTO": {
             "type": "object",
             "required": [
                 "email",
@@ -879,7 +1097,7 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.UpdateProductDTO": {
+        "github_com_1layar_universe_pkg_shared_dto.UpdateProductDTO": {
             "type": "object",
             "required": [
                 "category_ids",
@@ -919,7 +1137,7 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.UpdateUser": {
+        "github_com_1layar_universe_pkg_shared_dto.UpdateUser": {
             "type": "object",
             "required": [
                 "email",

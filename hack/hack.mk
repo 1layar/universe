@@ -11,7 +11,7 @@ start: cli.install
 		echo "Unknown service command. Use 'make help' for available commands."; \
 	fi
 doc:
-	swag init --parseDependency -g ./internal/api_gateway/main.go
+	swag init --parseDependency -g ./internal/api_gateway/main.go && rm -rf ./internal/api_gateway/docs && mv docs ./internal/api_gateway/
 
 .PHONY: start-gateway
 start-gateway:

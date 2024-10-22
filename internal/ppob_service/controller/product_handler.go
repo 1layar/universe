@@ -51,7 +51,7 @@ func (i RouterItem[T, R]) Build() cqrs.CommandHandler {
 }
 
 func (h ProductHandler) GetHandlerName(name string) string {
-	return "product_catalog_service.product." + name
+	return "ppob.product." + name
 }
 
 func (h ProductHandler) RegHandler(handlers ...RouterItem[any, any]) {

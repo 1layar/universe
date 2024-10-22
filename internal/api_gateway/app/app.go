@@ -8,22 +8,19 @@ import (
 	"github.com/1layar/universe/internal/api_gateway/controller"
 	"github.com/1layar/universe/internal/api_gateway/server"
 	"github.com/1layar/universe/internal/api_gateway/validator"
-	"github.com/1layar/universe/internal/api_gateway/x/logger"
-	"github.com/1layar/universe/internal/api_gateway/x/logger/fxlogger"
+	"github.com/1layar/universe/pkg/logger"
 )
 
 func New(ctx appcontext.Ctx, additionalOpts ...fx.Option) *fx.App {
+	logger := logger.GetLogger()
+	logger.Debug("starting app...")
 	conf, err := appconfig.Parse(ctx)
 	if err != nil {
 		panic(err)
 	}
 
-	// logger and configuration are the only two things that are not in the fx graph
-	// because some other packages need them to be initialized before fx starts
-	logger.Configure(conf)
-
 	baseOpts := []fx.Option{
-		fx.WithLogger(fxlogger.Logger),
+		fx.WithLogger(logger.GetFxLogger),
 		fx.Supply(conf),
 		controller.Module(),
 		validator.Module(),

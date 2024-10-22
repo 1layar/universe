@@ -17,5 +17,5 @@ type CategoryHandler struct {
 }
 
 func (h CategoryHandler) GetHandlerName(name string) string {
-	return "product_catalog_service.product." + name
+	return "ppob.category." + name
 }

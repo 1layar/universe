@@ -10,5 +10,6 @@ func Module() fx.Option {
 		fx.Invoke(RegExistSKU),
 		fx.Invoke(RegUpdateProduct),
 		fx.Invoke(RegGetAllProduct),
+		fx.Invoke(RegGetAllType),
 	)
 }
