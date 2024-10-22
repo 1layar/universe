@@ -4,6 +4,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: openfga
+  namespace: openfga
   labels:
     helm.sh/chart: openfga-0.2.13
     app.kubernetes.io/name: openfga
@@ -60,7 +61,10 @@ spec:
             - name: OPENFGA_DATASTORE_ENGINE
               value: "postgres"
             - name: OPENFGA_DATASTORE_URI
-              value: "postgres://postgres:V4a0dU7AJpirM@my-pgsql-cluster-rw.pg.svc.cluster.local:5432/universe_db?sslmode=disable"
+              from:
+                secretKeyRef:
+                  name: openfga
+                  key: OPENFGA_DATASTORE_URI
             - name: OPENFGA_GRPC_ADDR
               value: "0.0.0.0:8081"
             - name: OPENFGA_HTTP_ENABLED
@@ -107,8 +111,8 @@ spec:
 
           resources:
             limits:
-              cpu: 1000m
+              cpu: 500m
               memory: 1Gi
             requests:
-              cpu: 1000m
+              cpu: 500m
               memory: 1Gi

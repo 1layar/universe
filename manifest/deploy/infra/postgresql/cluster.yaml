@@ -34,8 +34,8 @@ spec:
       min_wal_size: '1GB'
       max_wal_size: '4GB'
 
-    pg_hba:
-    - host all all 15.243.0.0/16 scram-sha-256
+    # pg_hba:
+    # - host all all 15.243.0.0/16 scram-sha-256
 
   bootstrap:
     initdb:
