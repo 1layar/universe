@@ -3,12 +3,16 @@ module github.com/1layar/universe/internal/checkout_service
 go 1.23.0
 
 require (
+	github.com/1layar/universe/internal/product_catalog_service v0.0.0-20250123070454-a3a0e57feea2
+	github.com/1layar/universe/pkg/logger v0.0.0-20250123070454-a3a0e57feea2
+	github.com/1layar/universe/pkg/migrator v0.0.0-20250123070454-a3a0e57feea2
+	github.com/1layar/universe/pkg/shared v0.0.0-20250123070454-a3a0e57feea2
 	github.com/ThreeDotsLabs/watermill v1.3.5
 	github.com/ThreeDotsLabs/watermill-amqp/v2 v2.1.1
 	github.com/imroc/req/v3 v3.43.7
 	github.com/joho/godotenv v1.5.1
 	github.com/kelseyhightower/envconfig v1.4.0
-	github.com/redis/go-redis/v9 v9.6.1
+	github.com/redis/go-redis/v9 v9.6.3
 	github.com/rs/zerolog v1.33.0
 	github.com/sony/gobreaker/v2 v2.0.0
 	github.com/uptrace/bun v1.2.3
@@ -21,6 +25,7 @@ require (
 
 require (
 	github.com/andybalholm/brotli v1.1.0 // indirect
+	github.com/benbjohnson/clock v1.3.0 // indirect
 	github.com/cenkalti/backoff/v3 v3.2.2 // indirect
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/cloudflare/circl v1.3.7 // indirect
@@ -47,11 +52,11 @@ require (
 	github.com/refraction-networking/utls v1.6.3 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/sony/gobreaker v0.5.0 // indirect
-	github.com/stretchr/testify v1.9.0 // indirect
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/xrash/smetrics v0.0.0-20201216005158-039620a65673 // indirect
+	go-micro.dev/v4 v4.10.2 // indirect
 	go.uber.org/atomic v1.7.0 // indirect
 	go.uber.org/dig v1.17.0 // indirect
 	go.uber.org/mock v0.4.0 // indirect
